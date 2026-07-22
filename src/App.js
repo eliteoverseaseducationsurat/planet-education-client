@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './App.css';
+import SEO from './SEO';
 
 function App() {
   // 1. Component State
@@ -68,6 +69,13 @@ function App() {
 
   return (
     <div className="App">
+      <SEO
+        title="Planet Education Surat"
+        description="Overseas education consultancy in Surat helping students study abroad."
+        keywords="study abroad, overseas education, Surat, student visa, IELTS, counseling, visa assistance, career guidance, international universities, planet education, study in Australia, study in Canada, study in UK, study in USA, overseas education consultancy, student support, global education, study abroad programs, international student services, planet education, planet education surat, study abroad consultancy, overseas education services, student visa assistance, career counseling, university admissions, IELTS preparation, study abroad guidance, international education consultancy"
+        url="planeteducationsurat.in/"
+      />
+   
       {/* Navigation Header */}
       <nav className="navbar">
         <div className="logo">Planet Education Surat</div>
