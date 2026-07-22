@@ -17,11 +17,11 @@ function App() {
 
   // 2. Fetch Initial Data
   useEffect(() => {
-    axios.get('http://localhost:5000/api/destinations')
+    axios.get('https://planet-education-server.onrender.com/api/destinations')
       .then(res => setDestinations(res.data))
       .catch(err => console.error('Error fetching destinations:', err));
 
-    axios.get('http://localhost:5000/api/services')
+    axios.get('https://planet-education-server.onrender.com/api/services')
       .then(res => setServices(res.data))
       .catch(err => console.error('Error fetching services:', err));
   }, []);
@@ -40,7 +40,7 @@ function App() {
 
     try {
       console.log('Sending formData:', formData);
-      const response = await fetch('http://localhost:5000/api/counseling', {
+      const response = await fetch('https://planet-education-server.onrender.com/api/counseling', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
