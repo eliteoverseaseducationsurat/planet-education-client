@@ -1,0 +1,49 @@
+/* src/Banner.css */
+.rotating-banner-container {
+  width: 100%;
+  overflow: hidden;
+  background-color: #002D62; /* Your primary dark blue color */
+  color: #FFFFFF;
+  padding: 10px 0;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  position: relative;
+  z-index: 100;
+}
+
+.rotating-banner-content {
+  display: flex;
+  white-space: nowrap;
+  /* Adjust animation duration (30s) as needed for speed */
+  animation: moveLeftToRight 30s linear infinite;
+  align-items: center;
+}
+
+.banner-item {
+  display: flex;
+  align-items: center;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 1.1rem;
+  font-weight: 600;
+  padding-right: 80px; /* Space between repeated items */
+}
+
+.banner-item img.banner-logo {
+  height: 35px; /* Adjust height of your logo in the banner */
+  width: auto;
+  margin-right: 15px;
+}
+
+/* Duplicate item styling */
+.banner-item.duplicate {
+  aria-hidden: true;
+}
+
+/* Keyframes for the infinite rotation animation */
+@keyframes moveLeftToRight {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
