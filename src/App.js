@@ -14,6 +14,14 @@ function App() {
     preferredCountry: 'Australia'
   });
   const [statusMsg, setStatusMsg] = useState('');
+  // Mobile Screen Detection
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth <= 768);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   // 2. Fetch Initial Data
   useEffect(() => {
@@ -83,42 +91,61 @@ function App() {
   return (
     <div className="App" style={{ fontFamily: "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif", color: '#1e293b' }}>
       
-     {/* 1. TOP TICKER BANNER */}
-     {/* <div style={{ backgroundColor: '#0d3b66', color: '#ffffff', padding: '8px 15px', fontSize: '0.9rem', textAlign: 'center', fontWeight: '500' }}>
-        <span>🌏 Planet Education Surat — Official Partner for 350+ Global Universities | Accredited Member of AAERI & ICEF | 100% Free Counseling</span>
-      </div>*/}
 
-      {/* 2. NAVIGATION HEADER */}
-           {/* 2. NAVIGATION HEADER WITH LOCAL LOGO */}
-      <nav style={{ display: 'flex', justifyContent: 'space-between', padding: '12px 5%', alignItems: 'center', backgroundColor: '#ffffff', boxShadow: '0 2px 10px rgba(0,0,0,0.08)', position: 'sticky', top: 0, zIndex: 1000 }}>
-        
-        {/* Logo and Brand Name */}
-        <a href="#top" onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' });
-              }}
-        style={{ display: 'flex', alignItems: 'center', gap: '12px', textDecoration: 'none', cursor: 'pointer' }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-          <img 
-            src="/planet_education_india__logo.jpg" 
-            alt="Planet Education Logo" 
-            style={{ height: '45px', width: 'auto', objectFit: 'contain' }} 
-          />
-          <div style={{ fontSize: '1.4rem', fontWeight: 'bold', color: '#0d3b66', display: 'flex', alignItems: 'center', gap: '6px' }}>
-            <span style={{ color: '#d97706', fontSize: '1rem', fontWeight: '600' }}>Surat</span>
+  {/* 2. NAVIGATION HEADER */}
+      <nav style={{ 
+        display: 'flex', 
+        justifyContent: 'space-between', 
+        padding: isMobile ? '10px 4%' : '12px 5%', 
+        alignItems: 'center', 
+        backgroundColor: '#ffffff', 
+        boxShadow: '0 2px 10px rgba(0,0,0,0.1)',
+        width: '100%',
+        boxSizing: 'border-box'
+      }}>
+
+        {/* Logo and Brand Name (LEFT SIDE) */}
+        <a href="#top" onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); }} style={{ textDecoration: 'none' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: isMobile ? '6px' : '12px', cursor: 'pointer' }}>
+            <img 
+              src="/planet_education_india__logo.jpg" 
+              alt="Planet Education Logo" 
+              style={{ height: isMobile ? '35px' : '45px', width: 'auto', objectFit: 'contain' }} 
+            />
+            <div style={{ fontSize: isMobile ? '1.1rem' : '1.4rem', fontWeight: 'bold', color: '#0d3b66', display: 'flex', alignItems: 'center', gap: '4px' }}>
+              <span style={{ color: '#d97706', fontSize: isMobile ? '0.85rem' : '1rem', fontWeight: '600' }}>Surat</span>
+            </div>
           </div>
-        </div>
         </a>
 
-        {/* Navigation Links */}
-        <ul style={{ display: 'flex', listStyle: 'none', gap: '25px', margin: 0, padding: 0, fontWeight: '600', fontSize: '0.95rem' }}>
-          <li><a href="#about" style={{ textDecoration: 'none', color: '#334155' }}>Who We Are</a></li>
-          <li><a href="#destinations" style={{ textDecoration: 'none', color: '#334155' }}>Destinations</a></li>
-          <li><a href="#services" style={{ textDecoration: 'none', color: '#334155' }}>Services</a></li>
-          <li><a href="#why-us" style={{ textDecoration: 'none', color: '#334155' }}>Why Choose Us</a></li>
-          <li><a href="#contact" style={{ textDecoration: 'none', color: '#334155' }}>Contact</a></li>
-          <li><a href="#counseling" style={{ textDecoration: 'none', color: '#0d3b66', border: '1.5px solid #0d3b66', padding: '6px 14px', borderRadius: '4px' }}>Free Counseling</a></li>
-        </ul>
-      </nav>
+        {/* Navigation Links (HIDDEN ON MOBILE, DISPLAYED ON DESKTOP) */}
+        {!isMobile && (
+          <ul style={{ display: 'flex', listStyle: 'none', gap: '25px', margin: 0, padding: 0, fontWeight: '600', fontSize: '0.95rem' }}>
+            <li><a href="#about" style={{ textDecoration: 'none', color: '#334155' }}>Who We Are</a></li>
+            <li><a href="#destinations" style={{ textDecoration: 'none', color: '#334155' }}>Destinations</a></li>
+            <li><a href="#services" style={{ textDecoration: 'none', color: '#334155' }}>Services</a></li>
+            <li><a href="#why-us" style={{ textDecoration: 'none', color: '#334155' }}>Why Choose Us</a></li>
+            <li><a href="#contact" style={{ textDecoration: 'none', color: '#334155' }}>Contact</a></li>
+          </ul>
+        )}
 
+        {/* Free Counseling Button (RIGHT SIDE ON BOTH MOBILE & DESKTOP) */}
+        <div>
+          <a href="#counseling" style={{ 
+            textDecoration: 'none', 
+            color: '#0d3b66', 
+            border: '1.5px solid #0d3b66', 
+            padding: isMobile ? '6px 10px' : '6px 14px', 
+            borderRadius: '4px', 
+            fontSize: isMobile ? '0.8rem' : '0.95rem',
+            fontWeight: '600',
+            whiteSpace: 'nowrap'
+          }}>
+            Free Counseling
+          </a>
+        </div>
+
+      </nav>
 
 
 
