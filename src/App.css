@@ -192,3 +192,37 @@ body {
   border-radius: 8px;
   overflow: hidden;
 }
+
+
+/* Continuous Infinite Scroll Keyframes */
+@keyframes marquee {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+
+.partner-marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee 55s linear infinite;
+}
+
+.partner-marquee-track:hover {
+  animation-play-state: paused; /* Pauses sliding when user hovers */
+}
+
+/* Destination & Service Card Hover Animation */
+.destination-card {
+  background-color: #ffffff;
+  padding: 25px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+  border: 1px solid #e2e8f0;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  cursor: pointer;
+}
+
+.destination-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 20px -3px rgba(13, 59, 102, 0.15);
+  border-color: #d97706;
+}

@@ -93,7 +93,8 @@ function App() {
       <nav style={{ display: 'flex', justifyContent: 'space-between', padding: '12px 5%', alignItems: 'center', backgroundColor: '#ffffff', boxShadow: '0 2px 10px rgba(0,0,0,0.08)', position: 'sticky', top: 0, zIndex: 1000 }}>
         
         {/* Logo and Brand Name */}
-        <a href="#" onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); }} style={{ textDecoration: 'none' }} 
+        <a href="#top" onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' });
+              }}
         style={{ display: 'flex', alignItems: 'center', gap: '12px', textDecoration: 'none', cursor: 'pointer' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
           <img 
@@ -113,6 +114,7 @@ function App() {
           <li><a href="#destinations" style={{ textDecoration: 'none', color: '#334155' }}>Destinations</a></li>
           <li><a href="#services" style={{ textDecoration: 'none', color: '#334155' }}>Services</a></li>
           <li><a href="#why-us" style={{ textDecoration: 'none', color: '#334155' }}>Why Choose Us</a></li>
+          <li><a href="#contact" style={{ textDecoration: 'none', color: '#334155' }}>Contact</a></li>
           <li><a href="#counseling" style={{ textDecoration: 'none', color: '#0d3b66', border: '1.5px solid #0d3b66', padding: '6px 14px', borderRadius: '4px' }}>Free Counseling</a></li>
         </ul>
       </nav>
@@ -133,7 +135,7 @@ function App() {
           <h1 style={{  fontSize: '2.5rem', marginBottom: '15px', fontWeight: '700', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px' }}>
             Planet Education <span style={{ color: '#d97706', fontSize: '2.5rem', fontWeight: '700' }}>Surat</span>
           </h1>
-          <h1 style={{ fontSize: '1.8rem', marginBottom: '15px', fontWeight: '650' }}>Direct Institute for Australia</h1>
+          
 
 
        
@@ -149,6 +151,103 @@ function App() {
           </div>
         </div>
       </section>
+
+
+            {/* OUR PARTNER INSTITUTES BANNER */}
+      <div style={{ backgroundColor: '#f8fafc', padding: '35px 0', borderBottom: '1px solid #e2e8f0', overflow: 'hidden' }}>
+        <h3 style={{ textAlign: 'center', color: '#0d3b66', fontSize: '2rem', fontWeight: '700', marginBottom: '20px', letterSpacing: '0.5px',  }}>
+          Direct Institute for Australia
+        </h3>
+
+        <div style={{ display: 'flex', overflow: 'hidden', width: '100%', position: 'relative' }}>
+          <div className="partner-marquee-track">
+            {[
+              { name: "Australian National University", domain: "anu.edu.au", url: "https://www.anu.edu.au" },
+              { name: "Monash University", domain: "monash.edu", url: "https://www.monash.edu" },
+              { name: "University of Adelaide", domain: "adelaide.edu.au", url: "https://www.adelaide.edu.au" },
+              { name: "University of Western Australia", domain: "uwa.edu.au", url: "https://www.uwa.edu.au" },
+              { name: "Western Sydney University", domain: "westernsydney.edu.au", url: "https://www.westernsydney.edu.au" },
+              { name: "Southern Cross University", domain: "scu.edu.au", url: "https://www.scu.edu.au" },
+              { name: "Charles Darwin University", domain: "cdu.edu.au", url: "https://www.cdu.edu.au" },
+              { name: "Deakin University", domain: "deakin.edu.au", url: "https://www.deakin.edu.au" },
+              { name: "Griffith University", domain: "griffith.edu.au", url: "https://www.griffith.edu.au" },
+              { name: "La Trobe University", domain: "latrobe.edu.au", url: "https://www.latrobe.edu.au" },
+              { name: "University of Canberra", domain: "canberra.edu.au", url: "https://www.canberra.edu.au" },
+              { name: "University of Tasmania", domain: "utas.edu.au", url: "https://www.utas.edu.au" },
+              { name: "University of Wollongong", domain: "uow.edu.au", url: "https://www.uow.edu.au" },
+              { name: "CQUniversity Australia", domain: "cqu.edu.au", url: "https://www.cqu.edu.au" },
+              { name: "Federation University", domain: "federation.edu.au", url: "https://www.federation.edu.au" },
+              { name: "Murdoch University", domain: "murdoch.edu.au", url: "https://www.murdoch.edu.au" },
+              { name: "Edith Cowan University", domain: "ecu.edu.au", url: "https://www.ecu.edu.au" },
+              { name: "Victoria University", domain: "vu.edu.au", url: "https://www.vu.edu.au" },
+              { name: "La Trobe College Australia", domain: "latrobecollegeaustralia.edu.au", url: "https://www.latrobecollegeaustralia.edu.au" },
+              { name: "Griffith College", domain: "griffith.edu.au", url: "https://www.griffith.edu.au/college" },
+              { name: "Navitas", domain: "navitas.com", url: "https://www.navitas.com" },
+              { name: "SAIBT", domain: "saibt.edu.au", url: "https://www.saibt.edu.au" }
+            ].concat([
+              // Duplicate list to make infinite looping smooth
+              { name: "Australian National University", domain: "anu.edu.au", url: "https://www.anu.edu.au" },
+              { name: "Monash University", domain: "monash.edu", url: "https://www.monash.edu" },
+              { name: "University of Adelaide", domain: "adelaide.edu.au", url: "https://www.adelaide.edu.au" },
+              { name: "University of Western Australia", domain: "uwa.edu.au", url: "https://www.uwa.edu.au" },
+              { name: "Western Sydney University", domain: "westernsydney.edu.au", url: "https://www.westernsydney.edu.au" },
+              { name: "Southern Cross University", domain: "scu.edu.au", url: "https://www.scu.edu.au" },
+              { name: "Charles Darwin University", domain: "cdu.edu.au", url: "https://www.cdu.edu.au" },
+              { name: "Deakin University", domain: "deakin.edu.au", url: "https://www.deakin.edu.au" },
+              { name: "Griffith University", domain: "griffith.edu.au", url: "https://www.griffith.edu.au" },
+              { name: "La Trobe University", domain: "latrobe.edu.au", url: "https://www.latrobe.edu.au" },
+              { name: "University of Canberra", domain: "canberra.edu.au", url: "https://www.canberra.edu.au" },
+              { name: "University of Tasmania", domain: "utas.edu.au", url: "https://www.utas.edu.au" },
+              { name: "University of Wollongong", domain: "uow.edu.au", url: "https://www.uow.edu.au" },
+              { name: "CQUniversity Australia", domain: "cqu.edu.au", url: "https://www.cqu.edu.au" },
+              { name: "Federation University", domain: "federation.edu.au", url: "https://www.federation.edu.au" },
+              { name: "Murdoch University", domain: "murdoch.edu.au", url: "https://www.murdoch.edu.au" },
+              { name: "Edith Cowan University", domain: "ecu.edu.au", url: "https://www.ecu.edu.au" },
+              { name: "Victoria University", domain: "vu.edu.au", url: "https://www.vu.edu.au" },
+              { name: "La Trobe College Australia", domain: "latrobecollegeaustralia.edu.au", url: "https://www.latrobecollegeaustralia.edu.au" },
+              { name: "Griffith College", domain: "griffith.edu.au", url: "https://www.griffith.edu.au/college" },
+              { name: "Navitas", domain: "navitas.com", url: "https://www.navitas.com" },
+              { name: "SAIBT", domain: "saibt.edu.au", url: "https://www.saibt.edu.au" }
+            ]).map((partner, index) => (
+              <a
+                key={index}
+                href={partner.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '12px',
+                  backgroundColor: '#ffffff',
+                  padding: '10px 20px',
+                  margin: '0 12px',
+                  borderRadius: '30px',
+                  boxShadow: '0 2px 6px rgba(0,0,0,0.06)',
+                  border: '1px solid #e2e8f0',
+                  textDecoration: 'none',
+                  whiteSpace: 'nowrap',
+                  cursor: 'pointer',
+                  transition: 'transform 0.2s ease, boxShadow 0.2s ease'
+                }}
+              >
+                <img
+                  src={`https://www.google.com/s2/favicons?domain=${partner.domain}&sz=64`}
+                  alt={partner.name}
+                  style={{ width: '24px', height: '24px', borderRadius: '50%' }}
+                />
+                <span style={{ color: '#1e293b', fontWeight: '600', fontSize: '0.95rem' }}>
+                  {partner.name}
+                </span>
+              </a>
+            ))}
+          </div>
+        </div>
+      </div>
+
+
+
+
+
 
       {/* 4. WHO WE ARE / ABOUT */}
       <section id="about" style={{ padding: '60px 5%', backgroundColor: '#ffffff' }}>
@@ -185,12 +284,17 @@ function App() {
           <p style={{ textAlign: 'center', color: '#64748b', marginBottom: '40px' }}>Explore top study locations with high academic standards and post-study opportunities.</p>
           
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '20px' }}>
-            {displayDestinations.map((item, idx) => (
-              <div key={item.id || item._id || idx} style={{ backgroundColor: '#ffffff', padding: '25px', borderRadius: '8px', boxShadow: '0 4px 6px -1px rgba(0,0,0,0.05)', border: '1px solid #e2e8f0', textAlign: 'left' }}>
-                <h3 style={{ color: '#0d3b66', marginTop: 0, marginBottom: '10px' }}>{item.country}</h3>
-                <p style={{ color: '#475569', fontSize: '0.95rem', lineHeight: '1.5', margin: 0 }}>{item.description || item.desc}</p>
-              </div>
-            ))}
+          {displayDestinations.map((item, idx) => (
+            <div key={item.id || item._id || idx} className="destination-card">
+              <h3 style={{ color: '#0d3b66', marginTop: 0, marginBottom: '10px', fontSize: '1.25rem' }}>
+                {item.country}
+              </h3>
+              <p style={{ color: '#475569', fontSize: '0.95rem', lineHeight: '1.5', margin: 0 }}>
+                {item.description || item.desc}
+              </p>
+            </div>
+          ))}
+
           </div>
         </div>
       </section>
@@ -292,7 +396,6 @@ function App() {
                   <option value="Canada">Canada</option>
                   <option value="UK">United Kingdom</option>
                   <option value="USA">USA</option>
-                  <option value="New Zealand">New Zealand</option>
                 </select>
               </div>
 
@@ -327,19 +430,21 @@ function App() {
             </p>
           </div>
 
-          {/* Embedded Google Map */}
-          <div style={{ flex: '1 1 400px', minHeight: '320px', borderRadius: '8px', overflow: 'hidden', border: '1px solid #e2e8f0' }}>
-            <iframe
-              title="Planet Education Surat Location"
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3718.8365009591084!2d72.87648607597352!3d21.238331080546164!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be04f75d2b8bef5%3A0x20db711fdc0b92f2!2sPlanet%20Education%20Surat!5e0!3m2!1sen!2sin!4v1784718301859!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"
-              width="100%"
-              height="100%"
-              style={{ border: 0, minHeight: '320px' }}
-              allowFullScreen=""
-              loading="lazy"
-            ></iframe>
-          </div>
 
+          {/* Embedded Google Map */}
+      <div style={{ flex: '1 1 400px', minHeight: '320px', borderRadius: '8px', overflow: 'hidden', border: '1px solid #e2e8f0' }}>
+                <iframe
+          title="Planet Education Surat Location"
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3718.8366265949826!2d72.879061!3d21.2383261!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be04f75d2b8bef5%3A0x20db711fdc0b92f2!2sPlanet%20Education%20Surat!5e0!3m2!1sen!2sin!4v1784875161248!5m2!1sen!2sin"
+          width="100%"
+          height="100%"
+          style={{ border: 0, minHeight: '320px', borderRadius: '8px' }}
+          allowFullScreen=""
+          loading="lazy"
+          referrerPolicy="no-referrer-when-downgrade"
+        ></iframe>
+
+      </div>
         </div>
       </section>
 
@@ -353,244 +458,3 @@ function App() {
 }
 
 export default App;
-
-
-
-
-
-
-
-/*import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import './App.css';
-import SEO from './SEO';
-
-function App() {
-  // 1. Component State
-  const [destinations, setDestinations] = useState([]);
-  const [services, setServices] = useState([]);
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    preferredCountry: 'Australia'
-  });
-  const [statusMsg, setStatusMsg] = useState('');
-
-  // 2. Fetch Initial Data
-  useEffect(() => {
-    axios.get('https://planet-education-server.onrender.com/api/destinations')
-      .then(res => setDestinations(res.data))
-      .catch(err => console.error('Error fetching destinations:', err));
-
-    axios.get('https://planet-education-server.onrender.com/api/services')
-      .then(res => setServices(res.data))
-      .catch(err => console.error('Error fetching services:', err));
-  }, []);
-
-  // 3. Form Handlers
-  const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setStatusMsg('Submitting...');
-
-    try {
-      console.log('Sending formData:', formData);
-      const response = await fetch('https://planet-education-server.onrender.com/api/counseling', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
-      });
-
-      const data = await response.json();
-
-      if (data.success) {
-        setStatusMsg('Free counseling request submitted successfully!');
-        setFormData({
-          name: '',
-          email: '',
-          phone: '',
-          preferredCountry: 'Australia'
-        });
-      } else {
-        setStatusMsg('Error: ' + (data.error || 'Submission failed'));
-      }
-    } catch (err) {
-      console.error('Submission error:', err);
-      setStatusMsg('Failed to connect to the server. Please check backend.');
-    }
-  };
-
-  return (
-    <div className="App">
-      <SEO
-        title="Planet Education Surat"
-        description="Overseas education consultancy in Surat helping students study abroad."
-        keywords="study abroad, overseas education, Surat, student visa, IELTS, counseling, visa assistance, career guidance, international universities, planet education, study in Australia, study in Canada, study in UK, study in USA, overseas education consultancy, student support, global education, study abroad programs, international student services, planet education, planet education surat, study abroad consultancy, overseas education services, student visa assistance, career counseling, university admissions, IELTS preparation, study abroad guidance, international education consultancy"
-        url="planeteducationsurat.in/"
-      />
-   
-      
-      <nav className="navbar">
-        <div className="logo">Planet Education Surat</div>
-        <ul className="nav-links">
-          <li><a href="#destinations">Destinations</a></li>
-          <li><a href="#services">Services</a></li>
-          <li><a href="#counseling">Free Counseling</a></li>
-          <li><a href="#contact">Contact Us</a></li>
-        </ul>
-      </nav>
-
-      
-      <section className="hero">
-        <h1>Your Gateway to Global Education</h1>
-        <p>Empowering students to achieve their dreams of studying in top international universities.</p>
-      </section>
-
-     
-      <section id="destinations" className="section">
-        <h2>Top Destinations</h2>
-        <div className="grid-4">
-          {destinations.map((item) => (
-            <div key={item.id || item._id} className="card">
-              <h3>{item.country}</h3>
-              <p style={{ marginTop: '10px', color: '#64748b' }}>{item.description}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-     
-      <section id="services" className="section" style={{ background: '#f1f5f9' }}>
-        <h2>Our Core Services</h2>
-        <div className="grid-4">
-          {services.map((item) => (
-            <div key={item.id || item._id} className="card">
-              <h3>{item.title}</h3>
-              <p style={{ marginTop: '10px', color: '#64748b' }}>{item.desc || item.description}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      
-      <section id="counseling" className="section">
-        <h2>Book a Free Counseling Session</h2>
-        <p style={{ marginBottom: '20px', color: '#64748b' }}>
-          Speak directly with our expert education advisors.
-        </p>
-
-        <div className="form-container">
-          {statusMsg && (
-            <p style={{ color: statusMsg.includes('Error') || statusMsg.includes('Failed') ? 'red' : 'green', marginBottom: '15px' }}>
-              {statusMsg}
-            </p>
-          )}
-          <form onSubmit={handleSubmit}>
-            <div className="form-group">
-              <label>Full Name</label>
-              <input
-                type="text"
-                name="name"
-                value={formData.name}
-                onChange={handleChange}
-                required
-              />
-            </div>
-
-            <div className="form-group">
-              <label>Email Address</label>
-              <input
-                type="email"
-                name="email"
-                value={formData.email}
-                onChange={handleChange}
-                required
-              />
-            </div>
-
-            <div className="form-group">
-              <label>Phone Number</label>
-              <input
-                type="tel"
-                name="phone"
-                value={formData.phone}
-                onChange={handleChange}
-                required
-              />
-            </div>
-
-            <div className="form-group">
-              <label>Preferred Country</label>
-              <select
-                name="preferredCountry"
-                value={formData.preferredCountry}
-                onChange={handleChange}
-              >
-                <option value="Australia">Australia</option>
-                <option value="Canada">Canada</option>
-                <option value="UK">United Kingdom</option>
-                <option value="USA">USA</option>
-              </select>
-            </div>
-
-            <button type="submit" className="btn-submit">
-              Submit Request
-            </button>
-          </form>
-        </div>
-      </section>
-
-      
-      <section id="contact" className="section" style={{ background: '#f8fafc' }}>
-        <h2>Visit Our Branch</h2>
-        <p style={{ marginBottom: '30px', color: '#64748b' }}>
-          Get in touch or visit our office in Surat.
-        </p>
-
-        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '30px', justifyContent: 'center', alignItems: 'stretch' }}>
-          
-          <div className="card" style={{ flex: '1 1 300px', textAlign: 'left', padding: '25px' }}>
-            <h3 style={{ marginBottom: '15px', color: '#1e293b' }}>Surat Office</h3>
-            <p style={{ marginBottom: '10px', color: '#475569' }}>
-              <strong>Address:</strong> No. A201, 2nd Floor, Atlanta shopping Mall, Sudama Chowk,<br></br> Varachha Main Road, Khodiyar Nagar, Mota Varachha, Surat 394101
-            </p>
-            <p style={{ marginBottom: '10px', color: '#475569' }}>
-              <strong>Phone:</strong> +91 7984757064
-            </p>
-            <p style={{ marginBottom: '10px', color: '#475569' }}>
-              <strong>Email:</strong> planet.surat@gmail.com
-            </p>
-            <p style={{ color: '#475569' }}>
-              <strong>Working Hours:</strong> Mon - Sat: 10:00 AM - 7:00 PM
-            </p>
-          </div>
-
-          
-          <div style={{ flex: '1 1 400px', minHeight: '300px', borderRadius: '8px', overflow: 'hidden', boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)' }}>
-            <iframe
-              title="Planet Education Surat Location"
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d59522.10877660127!2d72.7851861886528!3d21.18692263457162!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be04f75d2b8bef5%3A0x20db711fdc0b92f2!2sPlanet%20Education%20Surat!5e0!3m2!1sen!2sin!4v1784538330599!5m2!1sen!2sin"
-              width="100%"
-              height="100%"
-              style={{ border: 0, minHeight: '300px' }}
-              allowFullScreen=""
-              loading="lazy"
-            ></iframe>
-          </div>
-        </div>
-      </section>
-    </div>
-  );
-}
-
-export default App;
-*/
