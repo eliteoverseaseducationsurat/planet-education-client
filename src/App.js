@@ -347,30 +347,36 @@ function App() {
         </div>
       </section>
 
-      {/* 7. WHY CHOOSE US */}
+            {/* 7. WHY CHOOSE US */}
       <section id="why-us" style={{ padding: '60px 5%', backgroundColor: '#0d3b66', color: '#ffffff' }}>
         <div style={{ maxWidth: '1000px', margin: '0 auto', textAlign: 'center' }}>
           <h2 style={{ fontSize: '2rem', marginBottom: '30px' }}>Why Choose Planet Education?</h2>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '25px' }}>
-            <div style={{ background: 'rgba(255,255,255,0.08)', padding: '20px', borderRadius: '8px' }}>
+            
+            <div className="feature-card" style={{ background: 'rgba(255, 255, 255, 0.08)', padding: '20px', borderRadius: '8px', cursor: 'pointer', transition: 'all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1)' }}>
               <h3 style={{ fontSize: '1.1rem', marginBottom: '10px' }}>Dedicated Mentors</h3>
               <p style={{ fontSize: '0.9rem', opacity: 0.85, margin: 0 }}>Experienced counselors providing one-on-one personalized attention.</p>
             </div>
-            <div style={{ background: 'rgba(255,255,255,0.08)', padding: '20px', borderRadius: '8px' }}>
+
+            <div className="feature-card" style={{ background: 'rgba(255, 255, 255, 0.08)', padding: '20px', borderRadius: '8px', cursor: 'pointer', transition: 'all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1)' }}>
               <h3 style={{ fontSize: '1.1rem', marginBottom: '10px' }}>100% Free Counseling</h3>
               <p style={{ fontSize: '0.9rem', opacity: 0.85, margin: 0 }}>Transparent profile evaluation without hidden application fees.</p>
             </div>
-            <div style={{ background: 'rgba(255,255,255,0.08)', padding: '20px', borderRadius: '8px' }}>
+
+            <div className="feature-card" style={{ background: 'rgba(255, 255, 255, 0.08)', padding: '20px', borderRadius: '8px', cursor: 'pointer', transition: 'all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1)' }}>
               <h3 style={{ fontSize: '1.1rem', marginBottom: '10px' }}>High Visa Success Rate</h3>
               <p style={{ fontSize: '0.9rem', opacity: 0.85, margin: 0 }}>Strict pre-checks to ensure seamless documentation and approval.</p>
             </div>
-            <div style={{ background: 'rgba(255,255,255,0.08)', padding: '20px', borderRadius: '8px' }}>
+
+            <div className="feature-card" style={{ background: 'rgba(255, 255, 255, 0.08)', padding: '20px', borderRadius: '8px', cursor: 'pointer', transition: 'all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1)' }}>
               <h3 style={{ fontSize: '1.1rem', marginBottom: '10px' }}>Post-Landing Support</h3>
               <p style={{ fontSize: '0.9rem', opacity: 0.85, margin: 0 }}>Assistance with accommodation, airport pickups, and local orientation.</p>
             </div>
+
           </div>
         </div>
       </section>
+
 
       {/* 8. TESTIMONIALS */}
       <section style={{ padding: '60px 5%', backgroundColor: '#ffffff' }}>

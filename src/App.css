@@ -226,3 +226,10 @@ body {
   box-shadow: 0 12px 20px -3px rgba(13, 59, 102, 0.15);
   border-color: #d97706;
 }
+
+/* Feature Cards Bubble Hover Effect */
+.feature-card:hover {
+  transform: translateY(-8px) scale(1.03); /* Lifts up and inflates like a bubble */
+  background: rgba(255, 255, 255, 0.16) !important; /* Brightens background */
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3), 0 0 15px rgba(217, 119, 6, 0.3); /* Soft shadow + warm glow */
+}
