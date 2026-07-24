@@ -94,6 +94,9 @@ function App() {
 
   {/* 2. NAVIGATION HEADER */}
       <nav style={{ 
+        position: 'sticky',
+        top: 0,
+        zIndex: 1000,
         display: 'flex', 
         justifyContent: 'space-between', 
         padding: isMobile ? '10px 4%' : '12px 5%', 
@@ -103,6 +106,7 @@ function App() {
         width: '100%',
         boxSizing: 'border-box'
       }}>
+
 
         {/* Logo and Brand Name (LEFT SIDE) */}
         <a href="#top" onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); }} style={{ textDecoration: 'none' }}>
