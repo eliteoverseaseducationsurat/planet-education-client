@@ -30,38 +30,38 @@ function App() {
   const testimonialsData = [
     {
       name: "Dixit Patel",
-      role: "MSc International Business, UK",
+      
       initials: "DP",
       bgColor: "#0d3b66", // Navy Theme
       text: "The education here is very good. The teaching staff and support staff are also very helpful. English is taught through different and interesting activities!"
     },
     {
       name: "Aayush Tnna",
-      role: "BSc Computer Science, Canada",
+     
       initials: "AT",
       bgColor: "#1e3a8a", // Deep Blue
       text: "Great expo, learned a lot about the requirements and criteria, and they were very supportive in getting into my dream college!"
     },
     {
-      name: "Priya Shah",
-      role: "Master of Data Science, Australia",
-      initials: "PS",
+      name: "Divya Chaudhary",
+      
+      initials: "DC",
       bgColor: "#047857", // Emerald Accent
-      text: "Planet Education made my Australian visa process completely stress-free. From document preparation to mock interviews, everything was handled professionally."
+      text: "It was a good experience, and they explained everything really well. It was a overall nice experience."
     },
     {
-      name: "Rohan Mehta",
-      role: "MBA, USA",
-      initials: "RM",
+      name: "Yash Makwana",
+      
+      initials: "YM",
       bgColor: "#b45309", // Warm Amber Accent
-      text: "100% free counseling without any hidden charges! They guided me step-by-step from choosing the right university to getting my I-20 approved."
+      text: "Really had a great experience.What stands out is their professionalism and timely communication throughout the process."
     },
     {
-      name: "Kavya Patel",
+      name: "Ishika Bhatt",
       role: "Post-Graduate Diploma, New Zealand",
-      initials: "KP",
+      initials: "IB",
       bgColor: "#4338ca", // Indigo Theme
-      text: "The post-landing support was amazing! They helped me find accommodation and gave great local orientation before I even flew out."
+      text: "I had a really good experience with this consultancy. The staff is very friendly and explained everything clearly. Highly recommended✨️"
     }
   ];
 
