@@ -58,7 +58,7 @@ function App() {
     },
     {
       name: "Ishika Bhatt",
-      role: "Post-Graduate Diploma, New Zealand",
+     
       initials: "IB",
       bgColor: "#4338ca", // Indigo Theme
       text: "I had a really good experience with this consultancy. The staff is very friendly and explained everything clearly. Highly recommended✨️"
