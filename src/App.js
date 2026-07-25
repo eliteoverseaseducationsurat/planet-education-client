@@ -23,6 +23,60 @@ function App() {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
+
+    // Testimonials Slider State
+  const [activeTestimonial, setActiveTestimonial] = useState(0);
+
+  const testimonialsData = [
+    {
+      name: "Dixit Patel",
+      role: "MSc International Business, UK",
+      initials: "DP",
+      bgColor: "#0d3b66", // Navy Theme
+      text: "The education here is very good. The teaching staff and support staff are also very helpful. English is taught through different and interesting activities!"
+    },
+    {
+      name: "Aayush Tnna",
+      role: "BSc Computer Science, Canada",
+      initials: "AT",
+      bgColor: "#1e3a8a", // Deep Blue
+      text: "Great expo, learned a lot about the requirements and criteria, and they were very supportive in getting into my dream college!"
+    },
+    {
+      name: "Priya Shah",
+      role: "Master of Data Science, Australia",
+      initials: "PS",
+      bgColor: "#047857", // Emerald Accent
+      text: "Planet Education made my Australian visa process completely stress-free. From document preparation to mock interviews, everything was handled professionally."
+    },
+    {
+      name: "Rohan Mehta",
+      role: "MBA, USA",
+      initials: "RM",
+      bgColor: "#b45309", // Warm Amber Accent
+      text: "100% free counseling without any hidden charges! They guided me step-by-step from choosing the right university to getting my I-20 approved."
+    },
+    {
+      name: "Kavya Patel",
+      role: "Post-Graduate Diploma, New Zealand",
+      initials: "KP",
+      bgColor: "#4338ca", // Indigo Theme
+      text: "The post-landing support was amazing! They helped me find accommodation and gave great local orientation before I even flew out."
+    }
+  ];
+
+  const handleNextTestimonial = () => {
+    setActiveTestimonial((prev) => (prev + 1) % testimonialsData.length);
+  };
+
+  const handlePrevTestimonial = () => {
+    setActiveTestimonial((prev) => (prev - 1 + testimonialsData.length) % testimonialsData.length);
+  };
+
+
+
+
+
   // 2. Fetch Initial Data
   useEffect(() => {
     axios.get('https://planet-education-server.onrender.com/api/destinations')
@@ -73,7 +127,6 @@ function App() {
     { country: 'Canada', description: 'Top universities, flexible post-graduation work permits, and high quality of life.' },
     { country: 'United Kingdom', description: 'Globally recognized degrees, 1-year Master programs, and rich heritage.' },
     { country: 'United States', description: 'Unmatched research facilities, flexible course choices, and global exposure.' },
-    { country: 'New Zealand', description: 'Excellent academic standards, scenic environment, and practical learning.' }
   ];
 
   const defaultServices = [
@@ -379,21 +432,129 @@ function App() {
 
 
       {/* 8. TESTIMONIALS */}
-      <section style={{ padding: '60px 5%', backgroundColor: '#ffffff' }}>
-        <div style={{ maxWidth: '900px', margin: '0 auto', textAlign: 'center' }}>
-          <h2 style={{ color: '#0d3b66', fontSize: '2rem', marginBottom: '30px' }}>Student Testimonials</h2>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '20px' }}>
-            <div style={{ backgroundColor: '#f8fafc', padding: '25px', borderRadius: '8px', border: '1px solid #e2e8f0', textAlign: 'left' }}>
-              <p style={{ fontStyle: 'italic', color: '#475569', fontSize: '0.95rem' }}>"The education here is very good. The teaching staff and support staff are also very helpful. English is taught through different and interesting activities!"</p>
-              <p style={{ fontWeight: 'bold', color: '#0d3b66', marginTop: '15px', marginBottom: 0 }}>— Dixit Patel</p>
-            </div>
-            <div style={{ backgroundColor: '#f8fafc', padding: '25px', borderRadius: '8px', border: '1px solid #e2e8f0', textAlign: 'left' }}>
-              <p style={{ fontStyle: 'italic', color: '#475569', fontSize: '0.95rem' }}>"Great expo, learned a lot about the requirements and criteria and they are very supportive in getting into my dream college!"</p>
-              <p style={{ fontWeight: 'bold', color: '#0d3b66', marginTop: '15px', marginBottom: 0 }}>— Aayush Tnna</p>
+          {/* 8. TESTIMONIALS */}
+      <section style={{ padding: '60px 5%', backgroundColor: '#f8fafc', overflow: 'hidden' }}>
+        <div style={{ maxWidth: '1000px', margin: '0 auto', textAlign: 'center' }}>
+          <h2 style={{ color: '#0d3b66', fontSize: '2rem', marginBottom: '10px' }}>What Our Students Say</h2>
+          <p style={{ color: '#64748b', fontSize: '0.95rem', marginBottom: '40px' }}>
+            Empowering students in Surat to achieve their international education dreams.
+          </p>
+
+          {/* Slider Viewport Container */}
+          <div style={{ position: 'relative', width: '100%', overflow: 'hidden', padding: '20px 0' }}>
+            <div style={{
+              display: 'flex',
+              gap: '20px',
+              transform: `translateX(calc(-${activeTestimonial * (isMobile ? 290 : 340)}px + ${isMobile ? '10px' : '330px'}))`,
+              transition: 'transform 0.4s cubic-bezier(0.25, 1, 0.5, 1)'
+            }}>
+              {testimonialsData.map((item, index) => {
+                const isActive = index === activeTestimonial;
+                return (
+                  <div
+                    key={index}
+                    onClick={() => setActiveTestimonial(index)}
+                    style={{
+                      minWidth: isMobile ? '270px' : '320px',
+                      maxWidth: isMobile ? '270px' : '320px',
+                      backgroundColor: item.bgColor,
+                      color: '#ffffff',
+                      borderRadius: '12px',
+                      padding: '25px',
+                      boxSizing: 'border-box',
+                      boxShadow: isActive ? '0 15px 30px rgba(13, 59, 102, 0.3)' : '0 4px 12px rgba(0,0,0,0.08)',
+                      transform: isActive ? 'scale(1.05) translateY(-5px)' : 'scale(0.92)',
+                      opacity: isActive ? 1 : 0.65,
+                      transition: 'all 0.4s ease',
+                      cursor: 'pointer',
+                      display: 'flex',
+                      flexDirection: 'column',
+                      justify: 'space-between',
+                      textAlign: 'left'
+                    }}
+                  >
+                    <div>
+                      {/* Avatar & Badge */}
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '15px' }}>
+                        <div style={{
+                          width: '42px',
+                          height: '42px',
+                          borderRadius: '8px',
+                          backgroundColor: 'rgba(255, 255, 255, 0.2)',
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                          fontWeight: 'bold',
+                          fontSize: '0.95rem',
+                          color: '#ffffff',
+                          border: '1px solid rgba(255, 255, 255, 0.3)'
+                        }}>
+                          {item.initials}
+                        </div>
+                        <div>
+                          <h4 style={{ margin: 0, fontSize: '1rem', fontWeight: 'bold' }}>{item.name}</h4>
+                          <span style={{ fontSize: '0.78rem', opacity: 0.85 }}>{item.role}</span>
+                        </div>
+                      </div>
+
+                      {/* Review Content */}
+                      <p style={{ fontSize: '0.9rem', lineHeight: '1.5', margin: 0, fontStyle: 'italic', opacity: 0.95 }}>
+                        "{item.text}"
+                      </p>
+                    </div>
+                  </div>
+                );
+              })}
             </div>
           </div>
+
+          {/* Navigation Arrows */}
+          <div style={{ display: 'flex', justifyContent: 'center', gap: '15px', marginTop: '30px' }}>
+            <button
+              onClick={handlePrevTestimonial}
+              style={{
+                width: '45px',
+                height: '45px',
+                borderRadius: '8px',
+                border: '1.5px solid #0d3b66',
+                backgroundColor: '#ffffff',
+                color: '#0d3b66',
+                fontSize: '1.2rem',
+                cursor: 'pointer',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                boxShadow: '0 2px 8px rgba(0,0,0,0.05)',
+                transition: 'all 0.2s ease'
+              }}
+            >
+              ←
+            </button>
+            <button
+              onClick={handleNextTestimonial}
+              style={{
+                width: '45px',
+                height: '45px',
+                borderRadius: '8px',
+                border: '1.5px solid #0d3b66',
+                backgroundColor: '#0d3b66',
+                color: '#ffffff',
+                fontSize: '1.2rem',
+                cursor: 'pointer',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                boxShadow: '0 2px 8px rgba(0,0,0,0.1)',
+                transition: 'all 0.2s ease'
+              }}
+            >
+              →
+            </button>
+          </div>
+
         </div>
       </section>
+
 
       {/* 9. COUNSELING FORM SECTION */}
       <section id="counseling" className="section" style={{ padding: '60px 5%', backgroundColor: '#f8fafc' }}>
