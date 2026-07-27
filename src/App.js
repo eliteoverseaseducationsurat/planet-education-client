@@ -375,18 +375,18 @@ function App() {
 
           {/* LEFT CONTENT COLUMN */}
           <div style={{ textAlign: isMobile ? 'center' : 'left' }}>
-            <span className="guide-badge">Your Australian Dream Starts Here</span>
+            <span className="guide-badge">Your Australian Dream</span>
             
             <h2 style={{ fontSize: isMobile ? '1.8rem' : '2.6rem', color: '#0d3b66', lineHeight: '1.2', marginBottom: '15px' }}>
               <span style={{ color: '#2563eb' }}>Study, </span>
-              <span style={{ color: '#059669' }}>Succeed, </span>
+              <span style={{ color: '#0d3b66' }}>Succeed, </span>
               <span style={{ color: '#d97706' }}>Settle.</span>
               <br />
               Your Complete Guide to Australia.
             </h2>
 
             <p style={{ color: '#475569', fontSize: '1rem', lineHeight: '1.6', marginBottom: '35px', maxWidth: '540px' }}>
-              From course selection to visa applications and post-study work pathways, Planet Education provides expert guidance for Indian students—absolutely free.
+              Planet Education provides free, end-to-end study abroad guidance for Indian students, helping them choose the right course and university, secure student visas, and explore post-study work opportunities in leading international destinations.
             </p>
 
             {/* STATS ROW */}
@@ -395,18 +395,18 @@ function App() {
               justifyContent: isMobile ? 'space-around' : 'flex-start',
               gap: isMobile ? '15px' : '45px'
             }}>
-              <div className="stat-item">
+              {/*<div className="stat-item">
                 <div style={{ fontSize: '1.8rem', fontWeight: 'bold', color: '#0d3b66' }}>12,000+</div>
                 <div style={{ fontSize: '0.8rem', color: '#64748b' }}>Students Counseled</div>
-              </div>
+              </div>*/}
               <div className="stat-item">
-                <div style={{ fontSize: '1.8rem', fontWeight: 'bold', color: '#d97706' }}>98.9%</div>
+                <div style={{ fontSize: '1.8rem', fontWeight: 'bold', color: '#d97706' }}>97%</div>
                 <div style={{ fontSize: '0.8rem', color: '#64748b' }}>Visa Success Rate</div>
               </div>
-              <div className="stat-item">
+              {/*<div className="stat-item">
                 <div style={{ fontSize: '1.8rem', fontWeight: 'bold', color: '#0d3b66' }}>28+</div>
                 <div style={{ fontSize: '0.8rem', color: '#64748b' }}>Years of Experience</div>
-              </div>
+              </div>*/}
             </div>
           </div>
 
