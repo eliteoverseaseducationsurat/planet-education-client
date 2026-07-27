@@ -233,3 +233,57 @@ body {
   background: rgba(255, 255, 255, 0.16) !important; /* Brightens background */
   box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3), 0 0 15px rgba(217, 119, 6, 0.3); /* Soft shadow + warm glow */
 }
+
+/* Australia Spotlight Section Styles */
+.guide-badge {
+  display: inline-block;
+  padding: 6px 14px;
+  background-color: #e0f2fe;
+  color: #0369a1;
+  font-size: 0.82rem;
+  font-weight: 600;
+  border-radius: 20px;
+  margin-bottom: 15px;
+}
+
+.stat-item {
+  transition: transform 0.3s ease;
+}
+
+.stat-item:hover {
+  transform: translateY(-5px);
+}
+
+/* Glassmorphism Visa Snapshot Card */
+.visa-snapshot-card {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 28px;
+  box-shadow: 0 10px 30px rgba(13, 59, 102, 0.08);
+  border: 1px solid #e2e8f0;
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.visa-snapshot-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 20px 40px rgba(13, 59, 102, 0.15);
+  border-color: #d97706;
+}
+
+/* Snapshot Info Items */
+.snapshot-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 12px;
+  border-radius: 8px;
+  border-left: 3px solid transparent;
+  transition: all 0.2s ease;
+}
+
+.snapshot-row:hover {
+  background-color: #f8fafc;
+  border-left-color: #d97706;
+  padding-left: 16px;
+}
+

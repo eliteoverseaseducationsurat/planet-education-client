@@ -361,6 +361,107 @@ function App() {
         </div>
       </section>
 
+
+      {/* 4.5 AUSTRALIA GUIDE SPOTLIGHT */}
+      <section style={{ padding: '70px 5%', backgroundColor: '#f8fafc' }}>
+        <div style={{
+          maxWidth: '1100px',
+          margin: '0 auto',
+          display: 'grid',
+          gridTemplateColumns: isMobile ? '1fr' : '1.2fr 0.8fr',
+          gap: '40px',
+          alignItems: 'center'
+        }}>
+
+          {/* LEFT CONTENT COLUMN */}
+          <div style={{ textAlign: isMobile ? 'center' : 'left' }}>
+            <span className="guide-badge">Your Australian Dream Starts Here</span>
+            
+            <h2 style={{ fontSize: isMobile ? '1.8rem' : '2.6rem', color: '#0d3b66', lineHeight: '1.2', marginBottom: '15px' }}>
+              <span style={{ color: '#2563eb' }}>Study, </span>
+              <span style={{ color: '#059669' }}>Succeed, </span>
+              <span style={{ color: '#d97706' }}>Settle.</span>
+              <br />
+              Your Complete Guide to Australia.
+            </h2>
+
+            <p style={{ color: '#475569', fontSize: '1rem', lineHeight: '1.6', marginBottom: '35px', maxWidth: '540px' }}>
+              From course selection to visa applications and post-study work pathways, Planet Education provides expert guidance for Indian students—absolutely free.
+            </p>
+
+            {/* STATS ROW */}
+            <div style={{
+              display: 'flex',
+              justifyContent: isMobile ? 'space-around' : 'flex-start',
+              gap: isMobile ? '15px' : '45px'
+            }}>
+              <div className="stat-item">
+                <div style={{ fontSize: '1.8rem', fontWeight: 'bold', color: '#0d3b66' }}>12,000+</div>
+                <div style={{ fontSize: '0.8rem', color: '#64748b' }}>Students Counseled</div>
+              </div>
+              <div className="stat-item">
+                <div style={{ fontSize: '1.8rem', fontWeight: 'bold', color: '#d97706' }}>98.9%</div>
+                <div style={{ fontSize: '0.8rem', color: '#64748b' }}>Visa Success Rate</div>
+              </div>
+              <div className="stat-item">
+                <div style={{ fontSize: '1.8rem', fontWeight: 'bold', color: '#0d3b66' }}>28+</div>
+                <div style={{ fontSize: '0.8rem', color: '#64748b' }}>Years of Experience</div>
+              </div>
+            </div>
+          </div>
+
+          {/* RIGHT SNAPSHOT CARD */}
+          <div className="visa-snapshot-card">
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px', paddingBottom: '10px', borderBottom: '1px solid #f1f5f9' }}>
+              <h3 style={{ fontSize: '1.2rem', color: '#0d3b66', margin: 0, fontWeight: '700' }}>Visa Snapshot 2026</h3>
+              <span style={{ fontSize: '0.75rem', backgroundColor: '#e0e7ff', color: '#3730a3', padding: '4px 10px', borderRadius: '6px', fontWeight: '600' }}>
+                Subclass 500
+              </span>
+            </div>
+
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+              <div className="snapshot-row">
+                <span style={{ color: '#475569', fontSize: '0.9rem' }}>Living Cost (Annual)</span>
+                <span style={{ fontWeight: '600', color: '#0d3b66', fontSize: '0.9rem' }}>AUD 29,710</span>
+              </div>
+
+              <div className="snapshot-row">
+                <span style={{ color: '#475569', fontSize: '0.9rem' }}>Work Rights</span>
+                <div style={{ textAlign: 'right' }}>
+                  <span style={{ fontWeight: '600', color: '#0d3b66', fontSize: '0.9rem', display: 'block' }}>24 Hrs / Week</span>
+                  <span style={{ fontSize: '0.75rem', color: '#64748b' }}>(48 Hrs / Fortnight)</span>
+                </div>
+              </div>
+
+              <div className="snapshot-row">
+                <span style={{ color: '#475569', fontSize: '0.9rem' }}>OSHC Health Cover</span>
+                <span style={{ fontWeight: '600', color: '#0d3b66', fontSize: '0.9rem' }}>AUD 650–750</span>
+              </div>
+
+              <div className="snapshot-row">
+                <span style={{ color: '#475569', fontSize: '0.9rem' }}>Visa Fee</span>
+                <span style={{ fontWeight: '600', color: '#0d3b66', fontSize: '0.9rem' }}>AUD 2,500</span>
+              </div>
+
+              <div className="snapshot-row" style={{ borderLeftColor: '#059669', backgroundColor: '#f0fdf4' }}>
+                <span style={{ color: '#059669', fontSize: '0.9rem', fontWeight: '600' }}>Post-Study Work Visa</span>
+                <span style={{ fontWeight: '700', color: '#059669', fontSize: '0.9rem' }}>Up to 4 Years</span>
+              </div>
+            </div>
+
+            <div style={{ marginTop: '20px', textAlign: 'center', fontSize: '0.75rem', color: '#94a3b8', letterSpacing: '0.5px' }}>
+              PROCESSING TIME: 4–6 WEEKS
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+
+
+
+
+
       {/* 5. TOP DESTINATIONS */}
       <section id="destinations" style={{ padding: '60px 5%', backgroundColor: '#f8fafc' }}>
         <div style={{ maxWidth: '1100px', margin: '0 auto' }}>
