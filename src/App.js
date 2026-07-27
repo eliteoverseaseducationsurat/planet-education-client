@@ -24,20 +24,19 @@ function App() {
   }, []);
 
 
-
-// Roadmap Helper Content Card
+// Google Maps Style Roadmap Component
 function RoadmapContentCard() {
   const [activeStep, setActiveStep] = React.useState(1);
   window.setRoadmapStepState = setActiveStep;
   window.activeRoadmapStep = activeStep;
 
   const stepsData = [
-    { id: 1, title: "1. University & Course Selection", phase: "Application Phase", desc: "Our counselors evaluate your academic profile, budget, and career goals to shortlist top CRICOS-registered Australian universities." },
-    { id: 2, title: "2. Document Preparation & SOP", phase: "Application Phase", desc: "Get full support drafting your Statement of Purpose (SOP), securing strong LORs, and organizing academic transcripts." },
-    { id: 3, title: "3. Application Filing", phase: "Application Phase", desc: "We submit direct applications on your behalf to secure conditional/unconditional offer letters quickly." },
-    { id: 4, title: "4. Offer Acceptance & CoE", phase: "Visa Phase", desc: "Guidance on tuition fee payment, OSHC (Overseas Student Health Cover), and obtaining your official Confirmation of Enrolment (CoE)." },
-    { id: 5, title: "5. Subclass 500 Visa Lodgement", phase: "Visa Phase", desc: "Filing your Australian student visa application with precision, including financial proof pre-checks and mock interview prep." },
-    { id: 6, title: "6. Visa Grant & Flying to Australia!", phase: "Pre-Departure Phase", desc: "Congratulations! We assist with flight bookings, forex card setup, accommodation, and pre-departure orientation." }
+    { id: 1, title: "1. University & Course Selection", phase: "Phase 1: Application", desc: "Our experts assess your profile, budget, and career ambitions to shortlist ideal CRICOS-certified Australian universities." },
+    { id: 2, title: "2. Document Preparation & SOP", phase: "Phase 1: Application", desc: "Get professional assistance drafting a compelling Statement of Purpose (SOP) and organizing financial & academic records." },
+    { id: 3, title: "3. Direct Application Submission", phase: "Phase 1: Application", desc: "Filing application forms directly with partner Australian institutions to secure offer letters fast." },
+    { id: 4, title: "4. Offer Acceptance & CoE", phase: "Phase 2: Visa Process", desc: "Guidance on paying tuition deposit, OSHC health cover, and securing your official Confirmation of Enrolment (CoE)." },
+    { id: 5, title: "5. Subclass 500 Visa Lodgement", phase: "Phase 2: Visa Process", desc: "Precise visa document verification, biometrics scheduling, and mock interview prep with experienced counselors." },
+    { id: 6, title: "6. Visa Approved & Departure!", phase: "Phase 3: Arrival", desc: "Congratulations! We assist with flight booking, forex cards, accommodation setup, and pre-departure briefings." }
   ];
 
   const current = stepsData.find(s => s.id === activeStep) || stepsData[0];
@@ -45,49 +44,50 @@ function RoadmapContentCard() {
   return (
     <div style={{
       marginTop: '25px',
-      backgroundColor: '#0d3b66',
-      color: '#ffffff',
-      borderRadius: '14px',
-      padding: '22px 28px',
+      backgroundColor: '#ffffff',
+      color: '#0d3b66',
+      borderRadius: '16px',
+      padding: '24px 30px',
       textAlign: 'left',
-      boxShadow: '0 10px 25px rgba(13, 59, 102, 0.2)',
+      boxShadow: '0 12px 32px rgba(13, 59, 102, 0.1)',
       display: 'flex',
       justifyContent: 'space-between',
       alignItems: 'center',
       flexWrap: 'wrap',
-      gap: '15px',
-      borderLeft: '5px solid #d97706'
+      gap: '20px',
+      border: '1px solid #e2e8f0',
+      borderLeft: '6px solid #d97706'
     }}>
-      <div>
-        <span style={{ fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '1px', color: '#f59e0b', fontWeight: 'bold' }}>
+      <div style={{ flex: '1 1 500px' }}>
+        <span style={{ fontSize: '0.78rem', textTransform: 'uppercase', letterSpacing: '1px', backgroundColor: '#fef3c7', color: '#b45309', padding: '4px 10px', borderRadius: '6px', fontWeight: 'bold' }}>
           {current.phase}
         </span>
-        <h3 style={{ margin: '4px 0 8px 0', fontSize: '1.25rem' }}>{current.title}</h3>
-        <p style={{ margin: 0, fontSize: '0.92rem', opacity: 0.9, maxWidth: '650px', lineHeight: '1.5' }}>
+        <h3 style={{ margin: '8px 0 6px 0', fontSize: '1.3rem', color: '#0d3b66' }}>{current.title}</h3>
+        <p style={{ margin: 0, fontSize: '0.94rem', color: '#475569', lineHeight: '1.5' }}>
           {current.desc}
         </p>
       </div>
 
-      {/* Step Switch Buttons */}
-      <div style={{ display: 'flex', gap: '8px' }}>
+      <div style={{ display: 'flex', gap: '10px' }}>
         <button
           disabled={activeStep === 1}
           onClick={() => setActiveStep(prev => Math.max(1, prev - 1))}
-          style={{ padding: '8px 16px', borderRadius: '6px', border: 'none', backgroundColor: activeStep === 1 ? 'rgba(255,255,255,0.2)' : '#d97706', color: '#fff', cursor: activeStep === 1 ? 'not-allowed' : 'pointer', fontWeight: 'bold' }}
+          style={{ padding: '10px 18px', borderRadius: '8px', border: '1px solid #cbd5e1', backgroundColor: activeStep === 1 ? '#f1f5f9' : '#ffffff', color: activeStep === 1 ? '#94a3b8' : '#0d3b66', cursor: activeStep === 1 ? 'not-allowed' : 'pointer', fontWeight: '600', transition: 'all 0.2s' }}
         >
-          Previous
+          ← Prev
         </button>
         <button
           disabled={activeStep === 6}
           onClick={() => setActiveStep(prev => Math.min(6, prev + 1))}
-          style={{ padding: '8px 16px', borderRadius: '6px', border: 'none', backgroundColor: activeStep === 6 ? 'rgba(255,255,255,0.2)' : '#d97706', color: '#fff', cursor: activeStep === 6 ? 'not-allowed' : 'pointer', fontWeight: 'bold' }}
+          style={{ padding: '10px 18px', borderRadius: '8px', border: 'none', backgroundColor: activeStep === 6 ? '#cbd5e1' : '#0d3b66', color: '#ffffff', cursor: activeStep === 6 ? 'not-allowed' : 'pointer', fontWeight: '600', boxShadow: '0 4px 12px rgba(13, 59, 102, 0.2)', transition: 'all 0.2s' }}
         >
-          Next Step
+          Next Step →
         </button>
       </div>
     </div>
   );
 }
+
 
 
 
@@ -448,7 +448,7 @@ function RoadmapContentCard() {
             
             <h2 style={{ fontSize: isMobile ? '1.8rem' : '2.6rem', color: '#0d3b66', lineHeight: '1.2', marginBottom: '15px' }}>
               <span style={{ color: '#2563eb' }}>Study, </span>
-              <span style={{ color: '#0d3b66' }}>Succeed, </span>
+              <span style={{ color: '#059669' }}>Succeed, </span>
               <span style={{ color: '#d97706' }}>Settle.</span>
               <br />
               Your Complete Guide to Australia.
@@ -526,109 +526,113 @@ function RoadmapContentCard() {
         </div>
       </section>
 
-      {/* STUDENT VISA ROADMAP SECTION */}
-      <section style={{ padding: '70px 5%', backgroundColor: '#ffffff', overflow: 'hidden' }}>
+      
+
+            {/* STUDENT VISA ROADMAP SECTION (GOOGLE MAPS THEME) */}
+      <section style={{ padding: '70px 5%', backgroundColor: '#ffffff' }}>
         <div style={{ maxWidth: '1100px', margin: '0 auto', textAlign: 'center' }}>
           
-          {/* Header */}
-          <span style={{ backgroundColor: '#fef3c7', color: '#b45309', padding: '6px 14px', borderRadius: '20px', fontSize: '0.85rem', fontWeight: 'bold' }}>
-            VISA COUNSELING
+          <span style={{ backgroundColor: '#e0f2fe', color: '#0369a1', padding: '6px 14px', borderRadius: '20px', fontSize: '0.82rem', fontWeight: 'bold' }}>
+            LIVE GPS ROADMAP
           </span>
-          <h2 style={{ fontSize: isMobile ? '1.8rem' : '2.5rem', color: '#0d3b66', marginTop: '15px', marginBottom: '10px' }}>
-            Your Complete Student Visa Roadmap
+          <h2 style={{ fontSize: isMobile ? '1.8rem' : '2.5rem', color: '#0d3b66', marginTop: '12px', marginBottom: '8px' }}>
+            Your Student Visa Flight Path
           </h2>
-          <p style={{ color: '#64748b', fontSize: '0.95rem', marginBottom: '40px' }}>
-            Click on any milestone pin along the path from India to Australia to view step details.
+          <p style={{ color: '#64748b', fontSize: '0.95rem', marginBottom: '35px' }}>
+            Select any milestone marker to navigate through your Australian study visa journey.
           </p>
 
-          {/* Interactive Map & Pathway Viewport */}
-          <div style={{ position: 'relative', width: '100%', maxWidth: '950px', margin: '0 auto', minHeight: isMobile ? '550px' : '480px', background: 'linear-gradient(135deg, #f8fafc 0%, #edf2f7 100%)', borderRadius: '20px', padding: '25px', boxShadow: 'inset 0 2px 8px rgba(0,0,0,0.04)', border: '1px solid #e2e8f0' }}>
+          {/* MAP CANVAS CONTAINER */}
+          <div className="map-canvas-container" style={{ position: 'relative', width: '100%', maxWidth: '980px', margin: '0 auto', height: isMobile ? '560px' : '460px', borderRadius: '24px', padding: '20px', border: '2px solid #e2e8f0', boxShadow: '0 20px 40px rgba(0,0,0,0.06)', overflow: 'hidden' }}>
 
-            {/* SVG Flight/Journey Dotted Path */}
+            {/* ROUTE LINE (SVG) */}
             <svg style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', pointerEvents: 'none', zIndex: 1 }}>
               <path
                 className="roadmap-path"
                 d={isMobile 
-                  ? "M 80,80 Q 220,130 160,200 T 200,320 T 150,440" 
-                  : "M 150,90 C 350,40 500,160 380,240 S 600,320 800,380"
+                  ? "M 90,85 C 220,130 220,220 120,270 C 20,320 220,400 160,480" 
+                  : "M 120,95 C 260,30 380,180 320,240 C 260,300 620,320 780,360"
                 }
                 fill="none"
-                stroke="#d97706"
-                strokeWidth="3.5"
+                stroke="#2563eb"
+                strokeWidth="4"
+                strokeLinecap="round"
               />
             </svg>
 
-            {/* 1. INDIA MAP (TOP LEFT / START) */}
-            <div style={{ position: 'absolute', top: '15px', left: '20px', zIndex: 2, textAlign: 'left' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '8px', backgroundColor: '#0d3b66', color: '#fff', padding: '6px 14px', borderRadius: '30px', fontWeight: 'bold', fontSize: '0.85rem', boxShadow: '0 4px 10px rgba(0,0,0,0.15)' }}>
-                <span style={{ width: '8px', height: '8px', borderRadius: '50%', backgroundColor: '#22c55e' }}></span>
-                START: INDIA
-              </div>
-              <svg width="70" height="70" viewBox="0 0 100 100" style={{ marginTop: '8px', opacity: 0.85, filter: 'drop-shadow(0px 4px 6px rgba(0,0,0,0.1))' }}>
-                <path d="M30,10 L50,15 L70,10 L80,30 L60,50 L75,70 L50,90 L35,75 L20,50 L30,10 Z" fill="#0d3b66" opacity="0.25" stroke="#0d3b66" strokeWidth="2" />
-              </svg>
-            </div>
-
-            {/* 2. AUSTRALIA MAP (BOTTOM RIGHT / COMPLETED) */}
-            <div style={{ position: 'absolute', bottom: '20px', right: '20px', zIndex: 2, textAlign: 'right' }}>
-              <div className="australia-celebration" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', backgroundColor: '#10b981', color: '#fff', padding: '8px 16px', borderRadius: '30px', fontWeight: 'bold', fontSize: '0.85rem' }}>
-                🎉 DESTINATION: AUSTRALIA
-              </div>
-              <div style={{ display: 'flex', justifyContent: 'flex-end', marginTop: '8px' }}>
-                <svg width="100" height="80" viewBox="0 0 100 80" style={{ opacity: 0.85, filter: 'drop-shadow(0px 4px 6px rgba(0,0,0,0.1))' }}>
-                  <path d="M10,20 L35,10 L75,15 L90,40 L70,70 L40,65 L15,50 Z" fill="#10b981" opacity="0.25" stroke="#10b981" strokeWidth="2" />
-                </svg>
+            {/* 1. INDIA START BADGE */}
+            <div style={{ position: 'absolute', top: '20px', left: '20px', zIndex: 10, display: 'flex', alignItems: 'center', gap: '10px', backgroundColor: '#ffffff', padding: '8px 16px', borderRadius: '12px', boxShadow: '0 6px 18px rgba(0,0,0,0.1)', border: '1px solid #cbd5e1' }}>
+              <span style={{ fontSize: '1.6rem' }}>🇮🇳</span>
+              <div style={{ textAlign: 'left' }}>
+                <div style={{ fontSize: '0.7rem', color: '#64748b', fontWeight: 'bold', textTransform: 'uppercase' }}>Origin</div>
+                <div style={{ fontSize: '0.95rem', fontWeight: 'bold', color: '#0d3b66' }}>India (Surat)</div>
               </div>
             </div>
 
-            {/* MILESTONE PINS (1 to 6) */}
+            {/* 2. AUSTRALIA DESTINATION BADGE */}
+            <div style={{ position: 'absolute', bottom: '20px', right: '20px', zIndex: 10, display: 'flex', alignItems: 'center', gap: '10px', backgroundColor: '#ffffff', padding: '8px 16px', borderRadius: '12px', boxShadow: '0 6px 18px rgba(0,0,0,0.1)', border: '1px solid #10b981' }}>
+              <span style={{ fontSize: '1.6rem' }}>🇦🇺</span>
+              <div style={{ textAlign: 'left' }}>
+                <div style={{ fontSize: '0.7rem', color: '#10b981', fontWeight: 'bold', textTransform: 'uppercase' }}>Destination</div>
+                <div style={{ fontSize: '0.95rem', fontWeight: 'bold', color: '#0d3b66' }}>Australia</div>
+              </div>
+            </div>
+
+            {/* GOOGLE MAP MILESTONE PINS (1 to 6) */}
             {[
-              { id: 1, title: 'University Selection', phase: 'Application Phase', desc: 'Shortlisting top Australian universities matching your academic profile and career goals.', pos: isMobile ? { top: '75px', left: '70px' } : { top: '70px', left: '180px' } },
-              { id: 2, title: 'Document Checklist & SOP', phase: 'Application Phase', desc: 'Gathering transcripts, LORs, and drafting an impactful Statement of Purpose (SOP).', pos: isMobile ? { top: '150px', left: '190px' } : { top: '50px', left: '420px' } },
-              { id: 3, title: 'Application Submission', phase: 'Application Phase', desc: 'Direct application filing with official partner institutions in Australia.', pos: isMobile ? { top: '220px', left: '130px' } : { top: '150px', left: '550px' } },
-              { id: 4, title: 'Offer Acceptance & CoE', phase: 'Visa Phase', desc: 'Paying tuition deposit and acquiring your official Confirmation of Enrolment (CoE).', pos: isMobile ? { top: '300px', left: '180px' } : { top: '230px', left: '360px' } },
-              { id: 5, title: 'Visa File Lodgement', phase: 'Visa Phase', desc: 'Submitting Subclass 500 visa application, OSHC health cover, and biometrics.', pos: isMobile ? { top: '380px', left: '120px' } : { top: '300px', left: '580px' } },
-              { id: 6, title: 'Visa Approval & Fly!', phase: 'Pre-Departure Phase', desc: 'Visa granted! Pre-departure briefings, forex card setup, and accommodation aid.', pos: isMobile ? { top: '450px', left: '160px' } : { top: '360px', left: '760px' } }
+              { id: 1, label: 'University', pos: isMobile ? { top: '80px', left: '70px' } : { top: '75px', left: '210px' } },
+              { id: 2, label: 'Documents & SOP', pos: isMobile ? { top: '160px', left: '170px' } : { top: '50px', left: '390px' } },
+              { id: 3, label: 'Application', pos: isMobile ? { top: '240px', left: '100px' } : { top: '160px', left: '460px' } },
+              { id: 4, label: 'Offer & CoE', pos: isMobile ? { top: '320px', left: '180px' } : { top: '230px', left: '320px' } },
+              { id: 5, label: 'Visa Filing', pos: isMobile ? { top: '400px', left: '110px' } : { top: '280px', left: '600px' } },
+              { id: 6, label: 'Fly Australia', pos: isMobile ? { top: '470px', left: '160px' } : { top: '340px', left: '760px' } }
             ].map((step) => {
-              const isActive = (window.activeRoadmapStep || 1) === step.id;
+              const activeId = window.activeRoadmapStep || 1;
+              const isActive = activeId === step.id;
+
               return (
                 <div
                   key={step.id}
-                  className={`milestone-pin ${isActive ? 'pin-active' : ''}`}
+                  className={`google-pin ${isActive ? 'active-pin' : ''}`}
                   onClick={() => {
                     window.activeRoadmapStep = step.id;
-                    // Trigger dynamic re-render by updating dummy state or state handler
                     if (window.setRoadmapStepState) window.setRoadmapStepState(step.id);
                   }}
                   style={{
                     position: 'absolute',
                     ...step.pos,
-                    zIndex: 10,
+                    zIndex: isActive ? 20 : 5,
                     display: 'flex',
                     flexDirection: 'column',
-                    alignItems: 'center',
-                    cursor: 'pointer'
+                    alignItems: 'center'
                   }}
                 >
-                  {/* Red Pin Badge */}
-                  <div style={{
-                    width: '34px',
-                    height: '34px',
-                    borderRadius: '50%',
-                    backgroundColor: isActive ? '#dc2626' : '#ef4444',
-                    color: '#ffffff',
+                  {/* Pulse Effect for Active Pin */}
+                  {isActive && <div className="gps-ripple" />}
+
+                  {/* SVG Google Map Teardrop Pin */}
+                  <svg width="36" height="46" viewBox="0 0 38 48" fill="none" style={{ filter: isActive ? 'drop-shadow(0px 8px 12px rgba(217,119,6,0.5))' : 'drop-shadow(0px 4px 6px rgba(0,0,0,0.2))' }}>
+                    <path d="M19 0C8.50659 0 0 8.50659 0 19C0 31.5 19 48 19 48C19 48 38 31.5 38 19C38 8.50659 29.4934 0 19 0Z" fill={isActive ? '#d97706' : '#0d3b66'} />
+                    <circle cx="19" cy="18" r="11" fill="#ffffff" />
+                    <text x="19" y="23" textAnchor="middle" fill={isActive ? '#d97706' : '#0d3b66'} fontSize="14" fontWeight="bold" fontFamily="sans-serif">
+                      {step.id}
+                    </text>
+                  </svg>
+
+                  {/* Step Title Pill */}
+                  <span style={{
+                    fontSize: '0.75rem',
                     fontWeight: 'bold',
-                    fontSize: '0.9rem',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    boxShadow: isActive ? '0 0 15px rgba(220, 38, 38, 0.8)' : '0 4px 10px rgba(0,0,0,0.2)',
-                    border: '2px solid #ffffff'
+                    color: isActive ? '#ffffff' : '#0d3b66',
+                    backgroundColor: isActive ? '#d97706' : 'rgba(255, 255, 255, 0.95)',
+                    padding: '3px 8px',
+                    borderRadius: '12px',
+                    marginTop: '2px',
+                    whiteSpace: 'nowrap',
+                    boxShadow: '0 2px 6px rgba(0,0,0,0.1)',
+                    border: '1px solid #e2e8f0'
                   }}>
-                    {step.id}
-                  </div>
-                  <span style={{ fontSize: '0.75rem', fontWeight: 'bold', color: '#0d3b66', marginTop: '4px', backgroundColor: 'rgba(255,255,255,0.9)', padding: '2px 6px', borderRadius: '4px', boxShadow: '0 2px 4px rgba(0,0,0,0.05)' }}>
-                    Step {step.id}
+                    {step.label}
                   </span>
                 </div>
               );
@@ -636,11 +640,12 @@ function RoadmapContentCard() {
 
           </div>
 
-          {/* DYNAMIC STEP CONTENT BOX BELOW MAP */}
+          {/* DETAILED CONTENT CARD */}
           <RoadmapContentCard />
 
         </div>
       </section>
+
 
 
 
