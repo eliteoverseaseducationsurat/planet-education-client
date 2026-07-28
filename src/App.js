@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './App.css';
+import confetti from 'canvas-confetti';
 
 function App() {
   // 1. Component State
@@ -87,6 +88,20 @@ function RoadmapContentCard() {
     </div>
   );
 }
+
+
+  const triggerCelebration = () => {
+    const duration = 2000; // Runs for 2 seconds
+    const end = Date.now() + duration;
+
+    const frame = () => {
+      confetti({ particleCount: 5, angle: 60, spread: 55, origin: { x: 0 }, colors: ['#22c55e', '#d97706', '#0d3b66'] });
+      confetti({ particleCount: 5, angle: 120, spread: 55, origin: { x: 1 }, colors: ['#22c55e', '#d97706', '#0d3b66'] });
+      if (Date.now() < end) requestAnimationFrame(frame);
+    };
+    frame();
+  };
+
 
 
 
@@ -594,10 +609,17 @@ function RoadmapContentCard() {
                 <div
                   key={step.id}
                   className={`google-pin ${isActive ? 'active-pin' : ''}`}
-                  onClick={() => {
-                    window.activeRoadmapStep = step.id;
-                    if (window.setRoadmapStepState) window.setRoadmapStepState(step.id);
-                  }}
+                    onClick={() => {
+  window.activeRoadmapStep = step.id;
+  if (window.setRoadmapStepState) window.setRoadmapStepState(step.id);
+  
+  // 👉 ADD THIS NEW CHECK FOR STEP 6:
+  if (step.id === 6) {
+    
+    triggerCelebration();
+  }
+}}
+
                   style={{
                     position: 'absolute',
                     ...step.pos,
