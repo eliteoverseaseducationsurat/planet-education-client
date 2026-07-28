@@ -25,6 +25,19 @@ function App() {
   }, []);
 
 
+  const [isAlternateText, setIsAlternateText] = useState(false);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setIsAlternateText(prev => !prev);
+    }, 3500); // Text animates every 3.5 seconds
+    return () => clearInterval(interval);
+  }, []);
+
+
+
+
+
 // Google Maps Style Roadmap Component
 function RoadmapContentCard() {
   const [activeStep, setActiveStep] = React.useState(1);
@@ -292,8 +305,45 @@ function RoadmapContentCard() {
 
 
 
+{/* 3. HERO BANNER */}
+<section style={{ background: 'linear-gradient(135deg, #0d3b66 0%, #1e40af 100%)', color: '#ffffff', padding: '70px 5%', textAlign: 'center' }}>
+  <div style={{ maxWidth: '900px', margin: '0 auto' }}>
+    
+    <h1 style={{ fontSize: '2.5rem', marginBottom: '15px', fontWeight: '700', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '10px' }}>
+      
+      {/* Left Word Wiping Container */}
+      <span className="wipe-wrapper" style={{ justifyItems: 'end' }}>
+        <span className={`wipe-text original ${isAlternateText ? 'hide' : 'show'}`}>Planet</span>
+        <span className={`wipe-text new font-handwritten ${isAlternateText ? 'show' : 'hide'}`}>Plan</span>
+      </span>
 
-      {/* 3. HERO BANNER */}
+      {/* Center Static Word */}
+      <span>Education</span>
+
+      {/* Right Word Wiping Container (Orange) */}
+      <span className="wipe-wrapper" style={{ color: '#d97706', justifyItems: 'start' }}>
+        <span className={`wipe-text original ${isAlternateText ? 'hide' : 'show'}`}>Surat</span>
+        <span className={`wipe-text new font-handwritten ${isAlternateText ? 'show' : 'hide'}`}>in Australia</span>
+      </span>
+
+    </h1>
+    {/* 👉 END OF NEW CODE */}
+
+    <h1 style={{ fontSize: '1.4rem', marginBottom: '15px', fontWeight: '630' }}>Your Gateway to Global Learning</h1>
+    <p style={{ fontSize: '1.15rem', opacity: 0.9, marginBottom: '30px', lineHeight: '1.6' }}>
+      Empowering students in Surat to achieve their dreams of studying in top international universities in Australia, Canada, UK, USA & New Zealand.
+    </p>
+     <div style={{ display: 'flex', justifyContent: 'center', gap: '20px', flexWrap: 'wrap' }}>
+            <span style={{ background: 'rgba(255,255,255,0.15)', padding: '8px 16px', borderRadius: '20px', fontSize: '0.9rem' }}>✓ Years of Experience</span>
+            <span style={{ background: 'rgba(255,255,255,0.15)', padding: '8px 16px', borderRadius: '20px', fontSize: '0.9rem' }}>✓ Thousands+ Students Guided</span>
+            <span style={{ background: 'rgba(255,255,255,0.15)', padding: '8px 16px', borderRadius: '20px', fontSize: '0.9rem' }}>✓ 97% Visa Success Rate</span>
+          </div>
+        </div>
+      </section>
+    
+    {/* ... rest of your code ... */}
+
+      {/* 3. HERO BANNER 
       <section style={{ background: 'linear-gradient(135deg, #0d3b66 0%, #1e40af 100%)', color: '#ffffff', padding: '70px 5%', textAlign: 'center' }}>
         <div style={{ maxWidth: '900px', margin: '0 auto' }}>
 
@@ -319,6 +369,7 @@ function RoadmapContentCard() {
           </div>
         </div>
       </section>
+      */}
 
 
             {/* OUR PARTNER INSTITUTES BANNER */}
