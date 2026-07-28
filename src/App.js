@@ -26,7 +26,7 @@ function App() {
 
 
   const [isAlternateText, setIsAlternateText] = useState(false);
-
+  const [activeStep, setActiveStep] = React.useState(1);
   useEffect(() => {
     const interval = setInterval(() => {
       setIsAlternateText(prev => !prev);
@@ -39,11 +39,7 @@ function App() {
 
 
 // Google Maps Style Roadmap Component
-function RoadmapContentCard() {
-  const [activeStep, setActiveStep] = React.useState(1);
-  window.setRoadmapStepState = setActiveStep;
-  window.activeRoadmapStep = activeStep;
-
+function RoadmapContentCard({ activeStep, setActiveStep }) {
   const stepsData = [
     { id: 1, title: "1. University & Course Selection", phase: "Phase 1: Application", desc: "Our experts assess your profile, budget, and career ambitions to shortlist ideal CRICOS-certified Australian universities." },
     { id: 2, title: "2. Document Preparation & SOP", phase: "Phase 1: Application", desc: "Get professional assistance drafting a compelling Statement of Purpose (SOP) and organizing financial & academic records." },
@@ -61,7 +57,7 @@ function RoadmapContentCard() {
       backgroundColor: '#ffffff',
       color: '#0d3b66',
       borderRadius: '16px',
-      padding: '24px 30px',
+      padding: '24px',
       textAlign: 'left',
       boxShadow: '0 12px 32px rgba(13, 59, 102, 0.1)',
       display: 'flex',
@@ -70,9 +66,11 @@ function RoadmapContentCard() {
       flexWrap: 'wrap',
       gap: '20px',
       border: '1px solid #e2e8f0',
-      borderLeft: '6px solid #d97706'
+      borderLeft: '6px solid #d97706',
+      boxSizing: 'border-box',
+      width: '100%'
     }}>
-      <div style={{ flex: '1 1 500px' }}>
+      <div style={{ minWidth: '280px', flex: 1 }}>
         <span style={{ fontSize: '0.78rem', textTransform: 'uppercase', letterSpacing: '1px', backgroundColor: '#fef3c7', color: '#b45309', padding: '4px 10px', borderRadius: '6px', fontWeight: 'bold' }}>
           {current.phase}
         </span>
@@ -82,7 +80,7 @@ function RoadmapContentCard() {
         </p>
       </div>
 
-      <div style={{ display: 'flex', gap: '10px' }}>
+      <div style={{ display: 'flex', gap: '10px', width: '100%', justifyContent: 'flex-end', flex: '0 1 auto' }}>
         <button
           disabled={activeStep === 1}
           onClick={() => setActiveStep(prev => Math.max(1, prev - 1))}
@@ -92,7 +90,13 @@ function RoadmapContentCard() {
         </button>
         <button
           disabled={activeStep === 6}
-          onClick={() => setActiveStep(prev => Math.min(6, prev + 1))}
+          onClick={() => {
+            setActiveStep(prev => {
+              const next = Math.min(6, prev + 1);
+              if (next === 6) triggerCelebration();
+              return next;
+            });
+          }}
           style={{ padding: '10px 18px', borderRadius: '8px', border: 'none', backgroundColor: activeStep === 6 ? '#cbd5e1' : '#0d3b66', color: '#ffffff', cursor: activeStep === 6 ? 'not-allowed' : 'pointer', fontWeight: '600', boxShadow: '0 4px 12px rgba(13, 59, 102, 0.2)', transition: 'all 0.2s' }}
         >
           Next Step →
@@ -101,6 +105,7 @@ function RoadmapContentCard() {
     </div>
   );
 }
+
 
 
   const triggerCelebration = () => {
@@ -310,7 +315,7 @@ function RoadmapContentCard() {
   <div style={{ maxWidth: '900px', margin: '0 auto' }}>
     
     <h1 className="animated-hero-heading" style={{ fontSize: '2.5rem', marginBottom: '15px', fontWeight: '700', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '10px' }}>
-      
+        
       {/* Left Word Wiping Container */}
       <span className="wipe-wrapper" style={{ justifyItems: 'end' }}>
         <span className={`wipe-text original ${isAlternateText ? 'hide' : 'show'}`}>Planet</span>
@@ -341,36 +346,6 @@ function RoadmapContentCard() {
         </div>
       </section>
     
-    {/* ... rest of your code ... */}
-
-      {/* 3. HERO BANNER 
-      <section style={{ background: 'linear-gradient(135deg, #0d3b66 0%, #1e40af 100%)', color: '#ffffff', padding: '70px 5%', textAlign: 'center' }}>
-        <div style={{ maxWidth: '900px', margin: '0 auto' }}>
-
-
- 
-
-          <h1 style={{  fontSize: '2.5rem', marginBottom: '15px', fontWeight: '700', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px' }}>
-            Planet Education <span style={{ color: '#d97706', fontSize: '2.5rem', fontWeight: '700' }}>Surat</span>
-          </h1>
-          
-
-
-       
-
-          <h1 style={{ fontSize: '1.4rem', marginBottom: '15px', fontWeight: '630' }}>Your Gateway to Global Learning</h1>
-          <p style={{ fontSize: '1.15rem', opacity: 0.9, marginBottom: '30px', lineHeight: '1.6' }}>
-            Empowering students in Surat to achieve their dreams of studying in top international universities in Australia, Canada, UK, USA & New Zealand.
-          </p>
-          <div style={{ display: 'flex', justifyContent: 'center', gap: '20px', flexWrap: 'wrap' }}>
-            <span style={{ background: 'rgba(255,255,255,0.15)', padding: '8px 16px', borderRadius: '20px', fontSize: '0.9rem' }}>✓ Years of Experience</span>
-            <span style={{ background: 'rgba(255,255,255,0.15)', padding: '8px 16px', borderRadius: '20px', fontSize: '0.9rem' }}>✓ Thousands+ Students Guided</span>
-            <span style={{ background: 'rgba(255,255,255,0.15)', padding: '8px 16px', borderRadius: '20px', fontSize: '0.9rem' }}>✓ 97% Visa Success Rate</span>
-          </div>
-        </div>
-      </section>
-      */}
-
 
             {/* OUR PARTNER INSTITUTES BANNER */}
       <div style={{ backgroundColor: '#f8fafc', padding: '35px 0', borderBottom: '1px solid #e2e8f0', overflow: 'hidden' }}>
@@ -594,130 +569,125 @@ function RoadmapContentCard() {
 
       
 
-            {/* STUDENT VISA ROADMAP SECTION (GOOGLE MAPS THEME) */}
-      <section style={{ padding: '70px 5%', backgroundColor: '#ffffff' }}>
-        <div style={{ maxWidth: '1100px', margin: '0 auto', textAlign: 'center' }}>
-          
-          <span style={{ backgroundColor: '#e0f2fe', color: '#0369a1', padding: '6px 14px', borderRadius: '20px', fontSize: '0.82rem', fontWeight: 'bold' }}>
-            LIVE GPS ROADMAP
-          </span>
-          <h2 style={{ fontSize: isMobile ? '1.8rem' : '2.5rem', color: '#0d3b66', marginTop: '12px', marginBottom: '8px' }}>
-            Your Student Visa Flight Path
-          </h2>
-          <p style={{ color: '#64748b', fontSize: '0.95rem', marginBottom: '35px' }}>
-            Select any milestone marker to navigate through your Australian study visa journey.
-          </p>
+{/* STUDENT VISA ROADMAP SECTION (GOOGLE MAPS THEME) */}
+<section style={{ padding: '70px 5%', backgroundColor: '#ffffff', overflow: 'hidden' }}>
+  <div style={{ maxWidth: '1100px', margin: '0 auto', textAlign: 'center' }}>
+    
+    <span style={{ backgroundColor: '#e0f2fe', color: '#0369a1', padding: '6px 14px', borderRadius: '20px', fontSize: '0.82rem', fontWeight: 'bold' }}>
+      LIVE GPS ROADMAP
+    </span>
+    <h2 style={{ fontSize: isMobile ? '1.8rem' : '2.5rem', color: '#0d3b66', marginTop: '12px', marginBottom: '8px' }}>
+      Your Student Visa Flight Path
+    </h2>
+    <p style={{ color: '#64748b', fontSize: '0.95rem', marginBottom: '35px' }}>
+      Select any milestone marker to navigate through your Australian study visa journey.
+    </p>
 
-          {/* MAP CANVAS CONTAINER */}
-          <div className="map-canvas-container" style={{ position: 'relative', width: '100%', maxWidth: '980px', margin: '0 auto', height: isMobile ? '560px' : '460px', borderRadius: '24px', padding: '20px', border: '2px solid #e2e8f0', boxShadow: '0 20px 40px rgba(0,0,0,0.06)', overflow: 'hidden' }}>
+    {/* MAP CANVAS CONTAINER */}
+    <div className="map-canvas-container" style={{ position: 'relative', width: '100%', maxWidth: '980px', margin: '0 auto', height: isMobile ? '560px' : '460px', borderRadius: '24px', padding: '20px', border: '2px solid #e2e8f0', boxShadow: '0 20px 40px rgba(0,0,0,0.06)', overflow: 'hidden' }}>
 
-            {/* ROUTE LINE (SVG) */}
-            <svg style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', pointerEvents: 'none', zIndex: 1 }}>
-              <path
-                className="roadmap-path"
-                d={isMobile 
-                  ? "M 90,85 C 220,130 220,220 120,270 C 20,320 220,400 160,480" 
-                  : "M 120,95 C 260,30 380,180 320,240 C 260,300 620,320 780,360"
-                }
-                fill="none"
-                stroke="#2563eb"
-                strokeWidth="4"
-                strokeLinecap="round"
-              />
+      {/* ROUTE LINE (SVG) - Fixed with ViewBox for perfect alignment */}
+      <svg viewBox={isMobile ? "0 0 350 560" : "0 0 980 460"} style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', pointerEvents: 'none', zIndex: 1 }}>
+        <path
+          className="roadmap-path"
+          d={isMobile 
+            ? "M 88,105 C 200,160 250,220 118,265 C 40,320 220,380 178,495" 
+            : "M 228,100 C 350,50 350,150 408,75 C 460,40 500,200 478,185 C 400,280 620,350 778,365"
+          }
+          fill="none"
+          stroke="#3b82f6"
+          strokeWidth="3"
+          strokeDasharray="8 6"
+          strokeLinecap="round"
+          style={{ opacity: 0.6 }}
+        />
+      </svg>
+
+      {/* 1. INDIA START BADGE */}
+      <div style={{ position: 'absolute', top: '20px', left: '20px', zIndex: 10, display: 'flex', alignItems: 'center', gap: '10px', backgroundColor: '#ffffff', padding: '8px 16px', borderRadius: '12px', boxShadow: '0 6px 18px rgba(0,0,0,0.1)', border: '1px solid #cbd5e1' }}>
+        <span style={{ fontSize: '1.6rem' }}>🇮🇳</span>
+        <div style={{ textAlign: 'left' }}>
+          <div style={{ fontSize: '0.7rem', color: '#64748b', fontWeight: 'bold', textTransform: 'uppercase' }}>Origin</div>
+          <div style={{ fontSize: '0.95rem', fontWeight: 'bold', color: '#0d3b66' }}>India (Surat)</div>
+        </div>
+      </div>
+
+      {/* 2. AUSTRALIA DESTINATION BADGE */}
+      <div style={{ position: 'absolute', bottom: '20px', right: '20px', zIndex: 10, display: 'flex', alignItems: 'center', gap: '10px', backgroundColor: '#ffffff', padding: '8px 16px', borderRadius: '12px', boxShadow: '0 6px 18px rgba(0,0,0,0.1)', border: '1px solid #10b981' }}>
+        <span style={{ fontSize: '1.6rem' }}>🇦🇺</span>
+        <div style={{ textAlign: 'left' }}>
+          <div style={{ fontSize: '0.7rem', color: '#10b981', fontWeight: 'bold', textTransform: 'uppercase' }}>Destination</div>
+          <div style={{ fontSize: '0.95rem', fontWeight: 'bold', color: '#0d3b66' }}>Australia</div>
+        </div>
+      </div>
+
+      {/* GOOGLE MAP MILESTONE PINS (1 to 6) */}
+      {[
+        { id: 1, label: 'University', pos: isMobile ? { top: '80px', left: '70px' } : { top: '75px', left: '210px' } },
+        { id: 2, label: 'Documents', pos: isMobile ? { top: '160px', left: '170px' } : { top: '50px', left: '390px' } },
+        { id: 3, label: 'Application', pos: isMobile ? { top: '240px', left: '100px' } : { top: '160px', left: '460px' } },
+        { id: 4, label: 'Offer & CoE', pos: isMobile ? { top: '320px', left: '180px' } : { top: '245px', left: '480px' } },
+        { id: 5, label: 'Visa Filing', pos: isMobile ? { top: '400px', left: '110px' } : { top: '280px', left: '600px' } },
+        { id: 6, label: 'Fly Australia', pos: isMobile ? { top: '470px', left: '160px' } : { top: '340px', left: '760px' } }
+      ].map((step) => {
+        const isActive = activeStep === step.id;
+
+        return (
+          <div
+            key={step.id}
+            className={`google-pin ${isActive ? 'active-pin' : ''}`}
+            onClick={() => {
+              setActiveStep(step.id);
+              if (step.id === 6) triggerCelebration();
+            }}
+            style={{
+              cursor: 'pointer',
+              position: 'absolute',
+              ...step.pos,
+              zIndex: isActive ? 20 : 5,
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              transition: 'transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275)'
+            }}
+          >
+            {/* SVG Google Map Teardrop Pin */}
+            <svg width={isActive ? "42" : "36"} height={isActive ? "54" : "46"} viewBox="0 0 38 48" fill="none" style={{ transition: 'all 0.3s ease', filter: isActive ? 'drop-shadow(0px 8px 12px rgba(217,119,6,0.6))' : 'drop-shadow(0px 4px 6px rgba(0,0,0,0.2))' }}>
+              <path d="M19 0C8.50659 0 0 8.50659 0 19C0 31.5 19 48 19 48C19 48 38 31.5 38 19C38 8.50659 29.4934 0 19 0Z" fill={isActive ? '#d97706' : '#0d3b66'} />
+              <circle cx="19" cy="18" r="11" fill="#ffffff" />
+              <text x="19" y="23" textAnchor="middle" fill={isActive ? '#d97706' : '#0d3b66'} fontSize="14" fontWeight="bold" fontFamily="sans-serif">
+                {step.id}
+              </text>
             </svg>
 
-            {/* 1. INDIA START BADGE */}
-            <div style={{ position: 'absolute', top: '20px', left: '20px', zIndex: 10, display: 'flex', alignItems: 'center', gap: '10px', backgroundColor: '#ffffff', padding: '8px 16px', borderRadius: '12px', boxShadow: '0 6px 18px rgba(0,0,0,0.1)', border: '1px solid #cbd5e1' }}>
-              <span style={{ fontSize: '1.6rem' }}>🇮🇳</span>
-              <div style={{ textAlign: 'left' }}>
-                <div style={{ fontSize: '0.7rem', color: '#64748b', fontWeight: 'bold', textTransform: 'uppercase' }}>Origin</div>
-                <div style={{ fontSize: '0.95rem', fontWeight: 'bold', color: '#0d3b66' }}>India (Surat)</div>
-              </div>
-            </div>
-
-            {/* 2. AUSTRALIA DESTINATION BADGE */}
-            <div style={{ position: 'absolute', bottom: '20px', right: '20px', zIndex: 10, display: 'flex', alignItems: 'center', gap: '10px', backgroundColor: '#ffffff', padding: '8px 16px', borderRadius: '12px', boxShadow: '0 6px 18px rgba(0,0,0,0.1)', border: '1px solid #10b981' }}>
-              <span style={{ fontSize: '1.6rem' }}>🇦🇺</span>
-              <div style={{ textAlign: 'left' }}>
-                <div style={{ fontSize: '0.7rem', color: '#10b981', fontWeight: 'bold', textTransform: 'uppercase' }}>Destination</div>
-                <div style={{ fontSize: '0.95rem', fontWeight: 'bold', color: '#0d3b66' }}>Australia</div>
-              </div>
-            </div>
-
-            {/* GOOGLE MAP MILESTONE PINS (1 to 6) */}
-            {[
-              { id: 1, label: 'University', pos: isMobile ? { top: '80px', left: '70px' } : { top: '75px', left: '210px' } },
-              { id: 2, label: 'Documents & SOP', pos: isMobile ? { top: '160px', left: '170px' } : { top: '50px', left: '390px' } },
-              { id: 3, label: 'Application', pos: isMobile ? { top: '240px', left: '100px' } : { top: '160px', left: '460px' } },
-              { id: 4, label: 'Offer & CoE', pos: isMobile ? { top: '320px', left: '180px' } : { top: '230px', left: '320px' } },
-              { id: 5, label: 'Visa Filing', pos: isMobile ? { top: '400px', left: '110px' } : { top: '280px', left: '600px' } },
-              { id: 6, label: 'Fly Australia', pos: isMobile ? { top: '470px', left: '160px' } : { top: '340px', left: '760px' } }
-            ].map((step) => {
-              const activeId = window.activeRoadmapStep || 1;
-              const isActive = activeId === step.id;
-
-              return (
-                <div
-                  key={step.id}
-                  className={`google-pin ${isActive ? 'active-pin' : ''}`}
-                    onClick={() => {
-  window.activeRoadmapStep = step.id;
-  if (window.setRoadmapStepState) window.setRoadmapStepState(step.id);
-  
-  // 👉 ADD THIS NEW CHECK FOR STEP 6:
-  if (step.id === 6) {
-    
-    triggerCelebration();
-  }
-}}
-
-                  style={{
-                    position: 'absolute',
-                    ...step.pos,
-                    zIndex: isActive ? 20 : 5,
-                    display: 'flex',
-                    flexDirection: 'column',
-                    alignItems: 'center'
-                  }}
-                >
-                  {/* Pulse Effect for Active Pin */}
-                  {isActive && <div className="gps-ripple" />}
-
-                  {/* SVG Google Map Teardrop Pin */}
-                  <svg width="36" height="46" viewBox="0 0 38 48" fill="none" style={{ filter: isActive ? 'drop-shadow(0px 8px 12px rgba(217,119,6,0.5))' : 'drop-shadow(0px 4px 6px rgba(0,0,0,0.2))' }}>
-                    <path d="M19 0C8.50659 0 0 8.50659 0 19C0 31.5 19 48 19 48C19 48 38 31.5 38 19C38 8.50659 29.4934 0 19 0Z" fill={isActive ? '#d97706' : '#0d3b66'} />
-                    <circle cx="19" cy="18" r="11" fill="#ffffff" />
-                    <text x="19" y="23" textAnchor="middle" fill={isActive ? '#d97706' : '#0d3b66'} fontSize="14" fontWeight="bold" fontFamily="sans-serif">
-                      {step.id}
-                    </text>
-                  </svg>
-
-                  {/* Step Title Pill */}
-                  <span style={{
-                    fontSize: '0.75rem',
-                    fontWeight: 'bold',
-                    color: isActive ? '#ffffff' : '#0d3b66',
-                    backgroundColor: isActive ? '#d97706' : 'rgba(255, 255, 255, 0.95)',
-                    padding: '3px 8px',
-                    borderRadius: '12px',
-                    marginTop: '2px',
-                    whiteSpace: 'nowrap',
-                    boxShadow: '0 2px 6px rgba(0,0,0,0.1)',
-                    border: '1px solid #e2e8f0'
-                  }}>
-                    {step.label}
-                  </span>
-                </div>
-              );
-            })}
-
+            {/* Step Title Pill */}
+            <span style={{
+              fontSize: '0.75rem',
+              fontWeight: 'bold',
+              color: isActive ? '#ffffff' : '#0d3b66',
+              backgroundColor: isActive ? '#d97706' : 'rgba(255, 255, 255, 0.95)',
+              padding: '4px 10px',
+              borderRadius: '12px',
+              marginTop: '4px',
+              whiteSpace: 'nowrap',
+              boxShadow: '0 4px 10px rgba(0,0,0,0.1)',
+              border: isActive ? 'none' : '1px solid #e2e8f0',
+              transition: 'all 0.3s ease'
+            }}>
+              {step.label}
+            </span>
           </div>
+        );
+      })}
 
-          {/* DETAILED CONTENT CARD */}
-          <RoadmapContentCard />
+    </div>
 
-        </div>
-      </section>
+    {/* 👉 PASS THE STATE DOWN TO THE CARD */}
+    <RoadmapContentCard activeStep={activeStep} setActiveStep={setActiveStep} />
+
+  </div>
+</section>
+
 
 
 
