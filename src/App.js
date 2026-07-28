@@ -309,7 +309,7 @@ function RoadmapContentCard() {
 <section style={{ background: 'linear-gradient(135deg, #0d3b66 0%, #1e40af 100%)', color: '#ffffff', padding: '70px 5%', textAlign: 'center' }}>
   <div style={{ maxWidth: '900px', margin: '0 auto' }}>
     
-    <h1 style={{ fontSize: '2.5rem', marginBottom: '15px', fontWeight: '700', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '10px' }}>
+    <h1 className="animated-hero-heading" style={{ fontSize: '2.5rem', marginBottom: '15px', fontWeight: '700', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '10px' }}>
       
       {/* Left Word Wiping Container */}
       <span className="wipe-wrapper" style={{ justifyItems: 'end' }}>

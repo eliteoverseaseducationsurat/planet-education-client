@@ -83,3 +83,26 @@ code {
   font-size: 1.3em; 
   letter-spacing: 1px;
 }
+
+
+/* Animated Hero Heading Layout */
+.animated-hero-heading {
+  font-size: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap; /* Allows words to drop to a new line on small screens */
+  gap: 10px;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .animated-hero-heading {
+    font-size: 1.7rem; /* Shrinks the base font size for mobile */
+    gap: 6px;
+  }
+  
+  .font-handwritten {
+    font-size: 1.2em; /* Keeps the handwritten font proportionate on mobile */
+  }
+}
