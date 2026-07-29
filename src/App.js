@@ -37,6 +37,70 @@ function App() {
 
 
 
+  // DREAM DESTINATIONS GRID SECTION
+function StudyCourseSection() {
+  const destinationsLeft = [
+    { name: 'IT & Data Science', img: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=600&auto=format&fit=crop' },
+    { name: 'Engineering', img: 'https://images.unsplash.com/photo-1581092160562-40aa08e78837?q=80&w=600&auto=format&fit=crop' },
+    { name: 'Biotechnology', img: 'https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?q=80&w=600&auto=format&fit=crop' },
+  ];
+
+  const destinationsRight = [
+    { name: 'Nursing & Physiotherapy', img: 'https://images.unsplash.com/photo-1579684385127-1ef15d508118?q=80&w=600&auto=format&fit=crop' },
+    { name: 'Business & Management', img: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=600&auto=format&fit=crop' },
+    { name: 'Architecture', img: 'https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=600&auto=format&fit=crop' },
+  ];
+
+  return (
+    <section className="destinations-section">
+      <div className="destinations-container">
+        
+        {/* Left Cards Column */}
+        <div className="cards-col left-col">
+          {destinationsLeft.map((item, index) => (
+            <div key={index} className="destination-card">
+              <img src={item.img} alt={item.name} />
+              <div className="card-overlay" />
+              <span className="card-title">{item.name}</span>
+            </div>
+          ))}
+        </div>
+
+        {/* Center Content Box */}
+        <div className="center-content-box">
+          <span className="badge-pill">GLOBAL OPPORTUNITIES</span>
+          <h2>
+            Discover <span className="highlight-text">Trending Courses</span>   Worldwide
+          </h2>
+          <p>
+            Explore Australia's most in-demand courses offered by leading universities and institutions. From Information Technology, Nursing, Engineering, and Business to Data Science, Cyber Security, and Hospitality, find programs that align with global industry demand. Learn about course duration, tuition fees, career opportunities, post-study work visas, and PR pathways with expert guidance from Planet Education.
+          </p>
+          {/* <button className="btn-view-more">
+            View More
+          </button> */}
+        </div>
+
+        {/* Right Cards Column */}
+        <div className="cards-col right-col">
+          {destinationsRight.map((item, index) => (
+            <div key={index} className="destination-card">
+              <img src={item.img} alt={item.name} />
+              <div className="card-overlay" />
+              <span className="card-title">{item.name}</span>
+            </div>
+          ))}
+        </div>
+
+      </div>
+    </section>
+  );
+}
+
+
+
+
+
+
 
 // Google Maps Style Roadmap Component
 function RoadmapContentCard({ activeStep, setActiveStep }) {
@@ -281,7 +345,7 @@ function RoadmapContentCard({ activeStep, setActiveStep }) {
         {!isMobile && (
           <ul style={{ display: 'flex', listStyle: 'none', gap: '25px', margin: 0, padding: 0, fontWeight: '600', fontSize: '0.95rem' }}>
             <li><a href="#about" style={{ textDecoration: 'none', color: '#334155' }}>Who We Are</a></li>
-            <li><a href="#destinations" style={{ textDecoration: 'none', color: '#334155' }}>Destinations</a></li>
+            <li><a href="#courses" style={{ textDecoration: 'none', color: '#334155' }}>Courses</a></li>
             <li><a href="#services" style={{ textDecoration: 'none', color: '#334155' }}>Services</a></li>
             <li><a href="#why-us" style={{ textDecoration: 'none', color: '#334155' }}>Why Choose Us</a></li>
             <li><a href="#contact" style={{ textDecoration: 'none', color: '#334155' }}>Contact</a></li>
@@ -314,7 +378,7 @@ function RoadmapContentCard({ activeStep, setActiveStep }) {
 <section style={{ background: 'linear-gradient(135deg, #0d3b66 0%, #1e40af 100%)', color: '#ffffff', padding: '70px 5%', textAlign: 'center' }}>
   <div style={{ maxWidth: '900px', margin: '0 auto' }}>
     
-    <h1 className="animated-hero-heading" style={{ fontSize: '2.5rem', marginBottom: '15px', fontWeight: '700', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '10px' }}>
+    <h1 className="animated-hero-heading" style={{ fontSize: '4.0rem', marginBottom: '15px', fontWeight: '700', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '10px' }}>
         
       {/* Left Word Wiping Container */}
       <span className="wipe-wrapper" style={{ justifyItems: 'end' }}>
@@ -574,7 +638,7 @@ function RoadmapContentCard({ activeStep, setActiveStep }) {
   <div style={{ maxWidth: '1100px', margin: '0 auto', textAlign: 'center' }}>
     
     <span style={{ backgroundColor: '#e0f2fe', color: '#0369a1', padding: '6px 14px', borderRadius: '20px', fontSize: '0.82rem', fontWeight: 'bold' }}>
-      LIVE GPS ROADMAP
+      AUSTRALIA ROADMAP
     </span>
     <h2 style={{ fontSize: isMobile ? '1.8rem' : '2.5rem', color: '#0d3b66', marginTop: '12px', marginBottom: '8px' }}>
       Your Student Visa Flight Path
@@ -689,10 +753,9 @@ function RoadmapContentCard({ activeStep, setActiveStep }) {
 </section>
 
 
-
-
-
-
+      <section id="courses">
+        <StudyCourseSection/>
+      </section>
 
 
 
