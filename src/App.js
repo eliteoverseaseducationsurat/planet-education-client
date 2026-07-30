@@ -4,6 +4,165 @@ import axios from 'axios';
 import './App.css';
 import confetti from 'canvas-confetti';
 
+
+
+
+
+
+
+// PREMIUM COURSE FINDER SECTION
+function AustralianCourseFinder() {
+  // Expanded Database of Australian Courses to simulate a full system
+  const mockCourses = [
+    // New South Wales (NSW)
+    { id: 1, uni: "University of Sydney", state: "NSW", area: "IT & Data Science", level: "Masters", name: "Master of Data Science", tag: "Perfect Match" },
+    { id: 2, uni: "UNSW Sydney", state: "NSW", area: "Engineering", level: "Bachelors", name: "Bachelor of Civil Engineering", tag: "Top Ranked" },
+    { id: 3, uni: "Macquarie University", state: "NSW", area: "Business & Management", level: "Masters", name: "Master of Business Administration", tag: "" },
+    { id: 4, uni: "University of Technology Sydney", state: "NSW", area: "Nursing & Physiotherapy", level: "Bachelors", name: "Bachelor of Nursing", tag: "High Demand" },
+    
+    // Victoria (VIC)
+    { id: 5, uni: "University of Melbourne", state: "VIC", area: "IT & Data Science", level: "Masters", name: "Master of Information Technology", tag: "Highly Recommended" },
+    { id: 6, uni: "Monash University", state: "VIC", area: "Engineering", level: "Masters", name: "Master of Professional Engineering", tag: "" },
+    { id: 7, uni: "Deakin University", state: "VIC", area: "Nursing & Physiotherapy", level: "Bachelors", name: "Bachelor of Vision Science", tag: "Trending" },
+    { id: 8, uni: "RMIT University", state: "VIC", area: "Business & Management", level: "Bachelors", name: "Bachelor of Business", tag: "" },
+    
+    // Queensland (QLD)
+    { id: 9, uni: "University of Queensland", state: "QLD", area: "Biotechnology", level: "Masters", name: "Master of Biotechnology", tag: "Perfect Match" },
+    { id: 10, uni: "Griffith University", state: "QLD", area: "Nursing & Physiotherapy", level: "Bachelors", name: "Bachelor of Physiotherapy", tag: "High PR Chance" },
+    { id: 11, uni: "QUT", state: "QLD", area: "IT & Data Science", level: "Bachelors", name: "Bachelor of Games and Interactive Environments", tag: "" },
+    
+    // Western Australia (WA) & South Australia (SA)
+    { id: 12, uni: "University of Western Australia", state: "WA", area: "Engineering", level: "Masters", name: "Master of Ocean Leadership", tag: "" },
+    { id: 13, uni: "Curtin University", state: "WA", area: "Business & Management", level: "Masters", name: "Master of Supply Chain Management", tag: "Trending" },
+    { id: 14, uni: "University of Adelaide", state: "SA", area: "Biotechnology", level: "Bachelors", name: "Bachelor of Science (Biomedical Science)", tag: "" },
+    { id: 15, uni: "University of South Australia", state: "SA", area: "IT & Data Science", level: "Masters", name: "Master of Cyber Security", tag: "High Demand" },
+    
+    // ACT (Canberra)
+    { id: 16, uni: "Australian National University", state: "ACT", area: "IT & Data Science", level: "Masters", name: "Master of Computing", tag: "Top Ranked" }
+  ];
+
+  const [filters, setFilters] = useState({ area: '', state: '', level: '', keyword: '' });
+  const [results, setResults] = useState([]);
+  const [hasSearched, setHasSearched] = useState(false);
+
+  const handleSearch = () => {
+    const filtered = mockCourses.filter(course => {
+      const matchArea = filters.area ? course.area === filters.area : true;
+      const matchState = filters.state ? course.state === filters.state : true;
+      const matchLevel = filters.level ? course.level === filters.level : true;
+      const matchKeyword = filters.keyword ? 
+        (course.name.toLowerCase().includes(filters.keyword.toLowerCase()) || 
+         course.uni.toLowerCase().includes(filters.keyword.toLowerCase())) : true;
+      
+      return matchArea && matchState && matchLevel && matchKeyword;
+    });
+    setResults(filtered);
+    setHasSearched(true);
+  };
+
+  return (
+    <section className="course-finder-section">
+      <div className="finder-header">
+        <h2>Study in <span className="highlight-amber">Australia</span></h2>
+        <p>Explore premium programs at top Australian Universities & Institutions.</p>
+      </div>
+
+      <div className="search-console">
+        <div className="filter-grid">
+          
+          <div className="filter-group">
+            <label>Area of Study</label>
+            <select onChange={(e) => setFilters({...filters, area: e.target.value})}>
+              <option value="">All Areas</option>
+              <option value="IT & Data Science">IT & Data Science</option>
+              <option value="Engineering">Engineering</option>
+              <option value="Business & Management">Business & Management</option>
+              <option value="Biotechnology">Biotechnology</option>
+              <option value="Nursing & Physiotherapy">Nursing & Physiotherapy</option>
+            </select>
+          </div>
+
+          <div className="filter-group">
+            <label>State / Territory</label>
+            <select onChange={(e) => setFilters({...filters, state: e.target.value})}>
+              <option value="">All States</option>
+              <option value="NSW">New South Wales (NSW)</option>
+              <option value="VIC">Victoria (VIC)</option>
+              <option value="QLD">Queensland (QLD)</option>
+              <option value="WA">Western Australia (WA)</option>
+              <option value="SA">South Australia (SA)</option>
+              <option value="ACT">Aust. Capital Territory (ACT)</option>
+            </select>
+          </div>
+
+          <div className="filter-group">
+            <label>Program Level</label>
+            <select onChange={(e) => setFilters({...filters, level: e.target.value})}>
+              <option value="">All Levels</option>
+              <option value="Bachelors">Bachelors (UG)</option>
+              <option value="Masters">Masters (PG)</option>
+            </select>
+          </div>
+
+          <div className="filter-group">
+            <label>Search</label>
+            <input 
+              type="text" 
+              placeholder="Keywords or Uni..." 
+              onChange={(e) => setFilters({...filters, keyword: e.target.value})}
+            />
+          </div>
+
+        </div>
+
+        <button className="btn-search-massive" onClick={handleSearch}>
+          Search Courses
+        </button>
+      </div>
+
+      {hasSearched && (
+        <div className="search-results-container">
+          <h3 className="results-count">
+            {results.length} {results.length === 1 ? 'Program' : 'Programs'} Found
+          </h3>
+          
+          {results.length > 0 ? (
+            <div className="results-grid">
+              {results.map((course) => (
+                <div key={course.id} className="result-card">
+                  {course.tag && <span className={`result-tag ${course.tag === 'Perfect Match' ? 'tag-perfect' : 'tag-suggested'}`}>{course.tag}</span>}
+                  <h4>{course.name}</h4>
+                  <div className="result-details">
+                    <span>🏛️ {course.uni}</span>
+                    <span>📍 {course.state}</span>
+                    <span>🎓 {course.level}</span>
+                  </div>
+                  
+                  {/* 👉 HERE IS THE DIALPAD FIX */}
+                  <a 
+                    href="tel:+917984757064" 
+                    className="btn-apply-now" 
+                    style={{ display: 'block', textAlign: 'center', textDecoration: 'none', boxSizing: 'border-box' }}
+                  >
+                    Get Free Counseling
+                  </a>
+
+                </div>
+              ))}
+            </div>
+          ) : (
+            <div className="no-results">
+              <p>No exact matches found for your criteria. Try adjusting your filters!</p>
+              <button className="btn-reset" onClick={() => { setFilters({ area: '', state: '', level: '', keyword: '' }); handleSearch(); }}>Reset Search</button>
+            </div>
+          )}
+        </div>
+      )}
+    </section>
+  );
+}
+
+
 function App() {
   // 1. Component State
   const [destinations, setDestinations] = useState([]);
@@ -37,7 +196,7 @@ function App() {
 
 
 
-  // DREAM DESTINATIONS GRID SECTION
+  // DREAM Courses GRID SECTION
 function StudyCourseSection() {
   const destinationsLeft = [
     { name: 'IT & Data Science', img: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=600&auto=format&fit=crop' },
@@ -95,6 +254,12 @@ function StudyCourseSection() {
     </section>
   );
 }
+
+
+
+
+
+
 
 
 
@@ -756,6 +921,8 @@ function RoadmapContentCard({ activeStep, setActiveStep }) {
       <section id="courses">
         <StudyCourseSection/>
       </section>
+
+      <AustralianCourseFinder/>
 
 
 
