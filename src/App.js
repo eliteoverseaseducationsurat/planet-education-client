@@ -1186,7 +1186,7 @@ function RoadmapContentCard({ activeStep, setActiveStep }) {
               <strong>Address:</strong> No. A201, 2nd Floor, Atlanta Shopping Mall, Sudama Chowk, Mota Varachha, Surat, Gujarat 394101
             </p>
             <p style={{ marginBottom: '12px', color: '#475569' }}>
-              <strong>Phone:</strong> +91 7984757064
+              <strong>Phone:</strong> +91 7211168671
             </p>
             <p style={{ color: '#475569' }}>
               <strong>Working Hours:</strong> Mon - Sat: 10:00 AM - 7:00 PM
