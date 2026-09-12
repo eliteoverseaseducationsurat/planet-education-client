@@ -407,6 +407,66 @@ function RoadmapContentCard({ activeStep, setActiveStep }) {
 
 
 
+  // UPCOMING EVENT SECTION
+function UpcomingEventSection() {
+  // 👇 EDIT THESE TWO LINKS 👇
+  const googleFormLink = "https://docs.google.com/forms/d/e/1FAIpQLSf1XgePl_DnRW2VZz3qprh0Au9yDA9zNJKK2o8xmEySHsncCA/viewform?usp=pp_url&entry.635801450=Australia";
+  const eventImage = "https://eliteoverseaseducation.com/wp-content/uploads/2026/09/1000195572.jpg"; // Paste your event poster/image link here
+
+  return (
+    <section className="event-section">
+      <div className="event-container">
+        
+        {/* Left Side: Event Details */}
+        <div className="event-text-content">
+          <span className="badge-pill pulse-badge">📅 UPCOMING EVENT</span>
+          <h2>Join Our Next <span className="highlight-amber">Mega Education Fair</span></h2>
+          <p>
+            Don't miss the opportunity to meet representatives from top global universities. 
+            Get on-the-spot profile evaluations, scholarship guidance, and application fee waivers!
+          </p>
+          
+          <div className="event-details-list">
+            <div className="event-detail-item">
+              <span className="detail-icon">📍</span>
+              <div>
+                <strong>Location</strong>
+                <span>Loads Plaza, Delhi Gate, Ring Rd, Surat, Gujarat</span>
+              </div>
+            </div>
+            <div className="event-detail-item">
+              <span className="detail-icon">⏰</span>
+              <div>
+                <strong>Date & Time</strong>
+                <span>7th October | 11:00 AM - 3:00 PM</span>
+              </div>
+            </div>
+          </div>
+          
+          {/* Button also links to the form */}
+          <a href={googleFormLink} target="_blank" rel="noopener noreferrer" className="btn-register-event">
+            Register Now (Free)
+          </a>
+        </div>
+        
+        {/* Right Side: Clickable Image */}
+        <div className="event-image-content">
+          <a href={googleFormLink} target="_blank" rel="noopener noreferrer" className="event-image-wrapper">
+            <img src={eventImage} alt="Upcoming Education Fair" className="event-img" />
+            <div className="event-img-overlay">
+              <span>Click to Register 📝</span>
+            </div>
+          </a>
+        </div>
+
+      </div>
+    </section>
+  );
+}
+
+
+
+
 
   // 2. Fetch Initial Data
   useEffect(() => {
@@ -795,6 +855,17 @@ function RoadmapContentCard({ activeStep, setActiveStep }) {
 
         </div>
       </section>
+
+
+
+
+
+
+
+<UpcomingEventSection />
+
+
+
 
       
 
