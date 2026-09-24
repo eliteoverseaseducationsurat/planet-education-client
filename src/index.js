@@ -5,6 +5,18 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { HelmetProvider } from 'react-helmet-async';
 
+// Middleware to redirect non-www to www (301 Permanent Redirect)
+app.use((req, res, next) => {
+  const host = req.headers.host;
+  
+  // Check if request is coming to the non-www domain
+  if (host === 'planeteducationsurat.in') {
+    return res.redirect(301, `https://www.planeteducationsurat.in${req.originalUrl}`);
+  }
+  
+  next();
+});
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>

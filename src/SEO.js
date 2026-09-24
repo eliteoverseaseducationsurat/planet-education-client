@@ -4,7 +4,7 @@ import { Helmet } from 'react-helmet-async';
 const SEO = ({ title, description, keywords, url }) => {
   const siteName = 'Planet Education Surat';
   const defaultDescription = 'Overseas education consultancy in Surat helping students study abroad.';
-  const domain = 'https://planeteducationsurat.in';
+  const domain = 'https://www.planeteducationsurat.in';
 
   return (
     <Helmet>
@@ -17,10 +17,9 @@ const SEO = ({ title, description, keywords, url }) => {
       <meta property="og:type" content="website" />
       <meta property="og:title" content={title ? `${title} | ${siteName}` : siteName} />
       <meta property="og:description" content={description || defaultDescription} />
-      <meta property="og:url" content={url ? `${domain}${url}` : domain} />
-
+      <meta property="og:url" content={url ? `${domain}${url.startsWith('/') ? url : `/${url}`}` : domain} />
       {/* Canonical URL */}
-      <link rel="canonical" href={url ? `${domain}${url}` : domain} />
+      <link rel="canonical" href={url ? `${domain}${url.startsWith('/') ? url : `/${url}`}` : domain} />
     </Helmet>
   );
 };
