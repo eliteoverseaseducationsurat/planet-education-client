@@ -163,6 +163,101 @@ function AustralianCourseFinder() {
 }
 
 
+
+
+// PAST EVENTS SHOWCASE COMPONENT
+function EventsShowcase() {
+  const [selectedImage, setSelectedImage] = useState(null);
+
+  // Event Data Array (Add new events here in the future)
+  const events = [
+    {
+      id: 1,
+      badge: "🎉 HISTORIC SUCCESS",
+      title: "Australia University Connect 2026",
+      subtitle: "Surat's Biggest Direct Australian Education Fair",
+      description: 
+        "Planet Education hosted Surat's premier Australian University Connect fair, bringing top university delegates directly to students for on-the-spot profile evaluations, scholarship approvals, and visa counseling.",
+      highlights: [
+        "First-ever dedicated Australian university event in Surat",
+        "Over hundreds aspiring students & parents attended",
+        "Direct interaction with official university delegates"
+      ],
+      // 2x2 Grid Images (Replace these URLs with your actual photo links)
+      images: [
+        "https://eliteoverseaseducation.com/wp-content/uploads/2026/10/1000203885-scaled.jpg?q=80&w=600&auto=format&fit=crop",
+        "https://eliteoverseaseducation.com/wp-content/uploads/2026/10/1000203881-scaled.jpg?q=80&w=600&auto=format&fit=crop",
+        "https://eliteoverseaseducation.com/wp-content/uploads/2026/10/1000203882-scaled.jpg?q=80&w=600&auto=format&fit=crop",
+        "https://eliteoverseaseducation.com/wp-content/uploads/2026/10/1000203884-scaled.jpg?q=80&w=600&auto=format&fit=crop"
+      ],
+      reverse: false // false = Images Left, Text Right | true = Text Left, Images Right
+    }
+    // Add more events here in the future, following the same structure
+  ];
+
+  return (
+    <section className="glass-showcase-section">
+      <div className="showcase-header">
+        <span className="glass-badge">EVENT HIGHLIGHTS</span>
+        <h2>Celebrating Our <span className="highlight-amber">Successful Events</span></h2>
+        <p>Take a look at how Planet Education Surat connects students directly with global education leaders.</p>
+      </div>
+
+      <div className="showcase-container">
+        {events.map((event) => (
+          <div key={event.id} className={`glass-event-card ${event.reverse ? 'reverse-layout' : ''}`}>
+            
+            {/* 2x2 Image Grid */}
+            <div className="glass-grid-wrapper">
+              <div className="image-2x2-grid">
+                {event.images.map((imgUrl, idx) => (
+                  <div key={idx} className="grid-img-card" onClick={() => setSelectedImage(imgUrl)}>
+                    <img src={imgUrl} alt={`Event photo ${idx + 1}`} />
+                    <div className="glass-hover-overlay">
+                      <span> Expand</span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Content Details */}
+            <div className="glass-content-wrapper">
+              <span className="event-tag">{event.badge}</span>
+              <h3>{event.title}</h3>
+              <h4>{event.subtitle}</h4>
+              <p>{event.description}</p>
+              
+              <ul className="highlight-list">
+                {event.highlights.map((item, index) => (
+                  <li key={index}>
+                    <span className="check-icon">✓</span> {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+          </div>
+        ))}
+      </div>
+
+      {/* Lightbox / Image Preview Modal */}
+      {selectedImage && (
+        <div className="glass-modal-overlay" onClick={() => setSelectedImage(null)}>
+          <div className="glass-modal-content" onClick={(e) => e.stopPropagation()}>
+            <button className="modal-close-btn" onClick={() => setSelectedImage(null)}>✕</button>
+            <img src={selectedImage} alt="Expanded Event View" className="modal-preview-img" />
+          </div>
+        </div>
+      )}
+    </section>
+  );
+}
+
+
+
+
+
 function App() {
   // 1. Component State
   const [destinations, setDestinations] = useState([]);
@@ -410,6 +505,9 @@ function RoadmapContentCard({ activeStep, setActiveStep }) {
   // UPCOMING EVENT SECTION
 function UpcomingEventSection() {
   // 👇 EDIT THESE TWO LINKS 👇
+  const isEventActive = false; 
+//want to active then change to true
+  if (!isEventActive) return null;
   const googleFormLink = "https://docs.google.com/forms/d/e/1FAIpQLSf1XgePl_DnRW2VZz3qprh0Au9yDA9zNJKK2o8xmEySHsncCA/viewform?usp=pp_url&entry.635801450=Australia";
   const eventImage = "https://eliteoverseaseducation.com/wp-content/uploads/2026/09/1000195572.jpg"; // Paste your event poster/image link here
 
@@ -863,6 +961,7 @@ function UpcomingEventSection() {
 
 
 <UpcomingEventSection />
+<EventsShowcase />
 
 
 
